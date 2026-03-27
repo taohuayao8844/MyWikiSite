@@ -44,6 +44,63 @@ html {
   color: #4a3426;
 }
 
+html[data-theme='dark'] {
+  color: #ffffff;
+}
+
+/* Markdown 中的内联样式替代类 */
+.markdown .font-bold {
+  font-weight: bold;
+}
+
+.markdown .font-size-1-3em {
+  font-size: 1.3em;
+}
+
+.markdown .font-size-1-4em {
+  font-size: 1.4em;
+}
+
+.markdown .font-size-1-5em {
+  font-size: 1.5em;
+}
+
+.markdown .font-size-1-8em {
+  font-size: 1.8em;
+}
+
+.markdown .font-size-2em {
+  font-size: 2em;
+}
+
+.markdown .bg-teal {
+  background-color: #00CAAA;
+}
+
+.markdown .bg-blue {
+  background-color: #00AACC;
+}
+
+.markdown .bg-blue-dark {
+  background-color: #00AAbb;
+}
+
+.markdown .text-green {
+  color: #00AA66;
+}
+
+.markdown .text-red {
+  color: #FF0000;
+}
+
+.markdown .img-zoom-50 {
+  zoom: 50%;
+}
+
+.markdown .img-zoom-67 {
+  zoom: 67%;
+}
+
 /* 小空调自定义样式 */
 /* #airConditioning {
   padding-left: 30px;

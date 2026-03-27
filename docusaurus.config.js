@@ -41,23 +41,47 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // 指向当前个人仓库，便于后续维护文档来源
           editUrl: 'https://github.com/taohuayao8844/taohuayao8844.github.io/tree/main/',
+          // 配置 Markdown 支持 LaTeX 公式
+          remarkPlugins: [require('remark-math')],
+          rehypePlugins: [
+            [require('rehype-katex'), {
+              strict: false,
+              throwOnError: false,
+              output: 'html',
+              displayMode: false,
+            }],
+          ],
         },
         blog: {
           showReadingTime: true,
           // 指向当前个人仓库，便于后续维护博客来源
           editUrl: 'https://github.com/taohuayao8844/taohuayao8844.github.io/tree/main/',
-        },
-        pages: {
-          path: 'src/pages',
-          routeBasePath: '/home',
-
-          // ... configuration object here
+          // 配置博客支持 LaTeX 公式
+          remarkPlugins: [require('remark-math')],
+          rehypePlugins: [
+            [require('rehype-katex'), {
+              strict: false,
+              throwOnError: false,
+              output: 'html',
+              displayMode: false,
+            }],
+          ],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
+  ],
+
+  // 添加 KaTeX CSS 样式
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
+      type: 'text/css',
+      integrity: 'sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV',
+      crossorigin: 'anonymous',
+    },
   ],
 
   themeConfig:
@@ -84,13 +108,11 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
             position: 'right',
             label: '📗Wiki',
           },
-          { to: '/home', label: '🏡Home', position: 'right' },
-
           {
             href: 'https://sysnow.xyz/',
             label: '友链',
@@ -106,7 +128,7 @@ const config = {
             items: [
               {
                 label: 'Wiki',
-                to: '/',
+                to: '/intro',
               },
             ],
           },
@@ -128,15 +150,6 @@ const config = {
               {
                 label: '友链',
                 href: 'https://sysnow.xyz/',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Home',
-                to: '/home',
               },
             ],
           },
