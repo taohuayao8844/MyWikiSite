@@ -7,26 +7,26 @@ const oceanicNext = require('prism-react-renderer/themes/oceanicNext')
 const duotoneLight = require('prism-react-renderer/themes/duotoneLight')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '数字生活 DigitalLife',
-  tagline: '这里是陈晨的知识库，欢迎访问~',
-  url: 'https://wiki.404Lab.top',
+  title: 'ZeroPointNine站',
+  tagline: '叹隙中驹，石中火，梦中身',
+  url: 'https://taohuayao8844.github.io',
   baseUrl: '/',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: '404Lab', // Usually your GitHub org/user name.
-  projectName: "Chen's Wiki", // Usually your repo name.
+  organizationName: 'taohuayao8844', // Usually your GitHub org/user name.
+  projectName: 'taohuayao8844.github.io', // Usually your repo name.
   i18n: {
     defaultLocale: 'zh-cn',
     locales: ['zh-cn'],
   },
-  scripts:[
+  scripts: process.env.track_url ? [
      {
       src: process.env.track_url,
       'data-website-id':process.env.track_id,
       async: true,
     }
-  ],
+  ] : [],
   presets: [
     [
       'classic',
@@ -39,13 +39,13 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/HiChen404/MyWikiSite/tree/master/',
+          // 指向当前个人仓库，便于后续维护文档来源
+          editUrl: 'https://github.com/taohuayao8844/taohuayao8844.github.io/tree/main/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // 指向当前个人仓库，便于后续维护博客来源
+          editUrl: 'https://github.com/taohuayao8844/taohuayao8844.github.io/tree/main/',
         },
         pages: {
           path: 'src/pages',
@@ -77,7 +77,7 @@ const config = {
       },
 
       navbar: {
-        title: '404Lab Wiki',
+        title: 'ZeroPointNine站',
         logo: {
           alt: 'My Site Logo',
           src: 'img/favicon.ico',
@@ -89,12 +89,11 @@ const config = {
             position: 'right',
             label: '📗Wiki',
           },
-          { to: '/blog', label: '👨🏻‍💻Blog', position: 'right' },
           { to: '/home', label: '🏡Home', position: 'right' },
 
           {
-            href: 'https://404Lab.top',
-            label: 'More',
+            href: 'https://sysnow.xyz/',
+            label: '友链',
             position: 'right',
           },
         ],
@@ -115,16 +114,20 @@ const config = {
             title: 'Contact',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'GitHub',
+                href: 'https://github.com/taohuayao8844/taohuayao8844.github.io',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: '微博',
+                href: 'https://weibo.com/u/5920416195',
               },
               {
-                label: 'Wechat Channel',
-                href: 'https://mp.weixin.qq.com/s/ytNsiyIjCb-URVLY90uSMw',
+                label: 'Bilibili',
+                href: 'https://space.bilibili.com/396104992?spm_id_from=333.1007.0.0',
+              },
+              {
+                label: '友链',
+                href: 'https://sysnow.xyz/',
               },
             ],
           },
@@ -132,17 +135,14 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'Telegram Channel',
-                href: 'https://t.me/EnjoyDigitalLife',
+                label: 'Home',
+                to: '/home',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Chen's Project, Inc.`,
+        copyright:
+          '© 2025 ZERO_POINT_NINE  |  <a href="https://www.beian.gov.cn/portal/query/index" target="_blank" rel="noopener noreferrer">浙ICP备2025202341号</a>',
       },
       prism: {
         theme: lightCodeTheme,
@@ -155,17 +155,17 @@ const config = {
         maxHeadingLevel: 5,
       },
       announcementBar: {
-        id: 'support_us',
+        id: 'zero_point_nine_repo',
         content:
-          '🚀 如果你觉得还不错, 就给一个 ⭐️ Start 吧 ~ <a target="_blank" rel="noopener noreferrer" href="https://github.com/HiChen404/MyWikiSite/tree/master/">Click here</a> ',
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
+          '🟫 当前站点源码仓库：<a target="_blank" rel="noopener noreferrer" href="https://github.com/taohuayao8844/taohuayao8844.github.io">GitHub</a>',
+        backgroundColor: '#f4ece3',
+        textColor: '#4a3426',
         isCloseable: false,
       },
       metadata: [
         {
-          name: '这是一个共享的知识库(Wiki Database)，内容涉及软件分享，学习笔记(JavaScript,Vue,Python,Go,Flutter,React)，搞机技巧，互联网冲浪技巧等内容',
-          content: 'Wiki Database,JavaScript,Vue,Python,Go,Flutter,React,破解,技巧,搞机,知识库,Github,黑客,iOS,iPhone',
+          name: 'description',
+          content: 'ZeroPointNine 的个人博客与知识整理站，记录学习、生活与思考。',
         },
       ],
     }),

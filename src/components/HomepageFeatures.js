@@ -2,41 +2,24 @@ import React from 'react'
 import clsx from 'clsx'
 import styles from './HomepageFeatures.module.css'
 
-const FeatureList = [
+const featureList = [
   {
-    title: '支持 Markdown',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
-    // description: (
-    //   <>
-    //     你只须专注于使用 Markdown/MDX 格式编写文档和文章即可， Docusaurus
-    //     会自动生成可以对外发布的静态 HTML 文件。 借助 MDX，你甚至可以将 JSX
-    //     组件嵌入到 Markdown 中。
-    //   </>
-    // ),
+    title: '个人博客',
+    description: '记录学习、生活与思考，保留更贴近当前站点定位的内容表达。',
   },
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
-    // description: <>内容可搜索,让你轻松地在文档中找到所需的内容。</>,
+    title: 'Wiki 知识整理',
+    description: '将文档内容作为主要信息入口，便于持续沉淀和检索。',
   },
   {
-    title: '基于 React 技术构建',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
-    // description: (
-    //   <>
-    //     Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-    //     ahead and move your docs into the <code>docs</code> directory.
-    //   </>
-    // ),
+    title: '轻量展示',
+    description: '移除模板默认插画资源，减少无关依赖，避免残留静态资源引用。',
   },
 ]
 
-function Feature({ Svg, title, description }) {
+function Feature({ title, description }) {
   return (
     <div className={clsx('col col--4')}>
-      <div className='text--center'>
-        <Svg className={styles.featureSvg} alt={title} />
-      </div>
       <div className='text--center padding-horiz--md'>
         <h3>{title}</h3>
         <p>{description}</p>
@@ -50,8 +33,12 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className='container'>
         <div className='row'>
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+          {featureList.map((featureItem) => (
+            <Feature
+              key={featureItem.title}
+              title={featureItem.title}
+              description={featureItem.description}
+            />
           ))}
         </div>
       </div>
