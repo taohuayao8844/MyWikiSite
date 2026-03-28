@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Layout from '@theme/Layout'
 import styles from './friends.module.css'
 
@@ -8,99 +8,83 @@ const friendsData = [
     category: '技术博客',
     links: [
       {
-        name: '阮一峰的网络日志',
-        url: 'https://www.ruanyifeng.com/blog/',
-        description: '知名技术博客，涵盖编程、网络技术、科技趋势等内容'
-      },
-      {
-        name: 'Hexo',
-        url: 'https://hexo.io/',
-        description: '快速、简洁且高效的博客框架'
-      },
-      {
-        name: 'Vue.js',
-        url: 'https://vuejs.org/',
-        description: '渐进式 JavaScript 框架'
-      },
-      {
         name: 'React',
         url: 'https://react.dev/',
-        description: '用于构建用户界面的 JavaScript 库'
-      },
+        description: '用于构建用户界面的 JavaScript 库',
+        isPinned: false,
+        isStarred: false,
+        isFeatured: false
+      }
     ]
   },
   {
-    category: '生活分享',
+    category: '强推友链博客',
     links: [
       {
-        name: '知乎',
-        url: 'https://www.zhihu.com/',
-        description: '中文互联网高质量的问答社区'
+        name: 'Wiki Power博客',
+        url: 'https://wiki-power.com/',
+        description: '一个RMer的网站,里面有很完整的电子类的知识和发展路径',
+        isPinned: true,
+        isStarred: true,
+        isFeatured: true
       },
       {
-        name: '豆瓣',
-        url: 'https://www.douban.com/',
-        description: '发现更多好书、电影、音乐'
-      },
-      {
-        name: '小红书',
-        url: 'https://www.xiaohongshu.com/',
-        description: '生活方式分享平台'
-      },
+        name: '碳烤鱼的博客',
+        url: 'https://www.indratang.top/s1/zero2hero',
+        description: '这个是一个浙大的工科学长,给了我很多的启发,如果大一就看了这个博客,可能会少走很多弯路,强推！',
+        isPinned: true,
+        isStarred: true,
+        isFeatured: true
+      }
     ]
   },
   {
-    category: '工具资源',
+    category: '好友博客',
     links: [
       {
-        name: 'GitHub',
-        url: 'https://github.com/',
-        description: '全球最大的代码托管平台'
-      },
-      {
-        name: 'Stack Overflow',
-        url: 'https://stackoverflow.com/',
-        description: '程序员问答社区'
-      },
-      {
-        name: 'MDN Web Docs',
-        url: 'https://developer.mozilla.org/',
-        description: 'Web 开发者的权威文档'
-      },
-      {
-        name: 'Canva',
-        url: 'https://www.canva.com/',
-        description: '在线设计工具，简单易用'
-      },
-    ]
-  },
-  {
-    category: '其他',
-    links: [
-      {
-        name: 'Bilibili',
-        url: 'https://www.bilibili.com/',
-        description: '国内知名的视频分享网站'
-      },
-      {
-        name: '网易云音乐',
-        url: 'https://music.163.com/',
-        description: '发现好音乐，享受音乐生活'
-      },
+        name: 'SysNow的博客',
+        url: 'https://sysnow.xyz/',
+        description: '理工的PWM_King的博客',
+        isPinned: false,
+        isStarred: true,
+        isFeatured: false
+      }
     ]
   }
 ]
+
+function sortLinksByPriority(linkList) {
+  return [...linkList].sort((leftLink, rightLink) => {
+    if (leftLink.isPinned !== rightLink.isPinned) {
+      return Number(rightLink.isPinned) - Number(leftLink.isPinned)
+    }
+
+    if (leftLink.isStarred !== rightLink.isStarred) {
+      return Number(rightLink.isStarred) - Number(leftLink.isStarred)
+    }
+
+    if (leftLink.isFeatured !== rightLink.isFeatured) {
+      return Number(rightLink.isFeatured) - Number(leftLink.isFeatured)
+    }
+
+    return 0
+  })
+}
 
 export default function Friends() {
   const [activeCategory, setActiveCategory] = useState('全部')
 
   // 获取所有分类
-  const categories = ['全部', ...friendsData.map(item => item.category)]
+  const categories = ['全部', ...friendsData.map((item) => item.category)]
 
-  // 根据分类筛选友链
-  const filteredLinks = activeCategory === '全部'
-    ? friendsData.flatMap(item => item.links)
-    : friendsData.find(item => item.category === activeCategory)?.links || []
+  // 根据分类筛选友链，并统一按优先级排序
+  const filteredLinks = useMemo(() => {
+    const currentLinks = activeCategory === '全部'
+      ? friendsData.flatMap((item) => item.links)
+      : friendsData.find((item) => item.category === activeCategory)?.links || []
+
+    return sortLinksByPriority(currentLinks)
+  }, [activeCategory])
 
   return (
     <Layout title='友链' description='我的友链列表'>
@@ -125,21 +109,39 @@ export default function Friends() {
 
         {/* 友链卡片网格 */}
         <div className={styles.linksGrid}>
-          {filteredLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className={styles.linkCard}
-            >
-              <div className={styles.cardContent}>
-                <h3 className={styles.linkName}>{link.name}</h3>
-                <p className={styles.linkDescription}>{link.description}</p>
-              </div>
-              <div className={styles.cardArrow}>→</div>
-            </a>
-          ))}
+          {filteredLinks.map((link) => {
+            const cardClassName = [
+              styles.linkCard,
+              link.isPinned ? styles.pinnedCard : '',
+              link.isFeatured ? styles.featuredCard : '',
+              link.isStarred ? styles.starredCard : ''
+            ]
+              .filter(Boolean)
+              .join(' ')
+
+            return (
+              <a
+                key={link.url}
+                href={link.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                className={cardClassName}
+              >
+                <div className={styles.cardContent}>
+                  <div className={styles.linkNameRow}>
+                    <h3 className={styles.linkName}>{link.name}</h3>
+                    {link.isStarred && (
+                      <span className={styles.starBadge} aria-label='星标推荐' title='星标推荐'>
+                        ★
+                      </span>
+                    )}
+                  </div>
+                  <p className={styles.linkDescription}>{link.description}</p>
+                </div>
+                <div className={styles.cardArrow}>→</div>
+              </a>
+            )
+          })}
         </div>
 
         {filteredLinks.length === 0 && (
