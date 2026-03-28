@@ -102,10 +102,6 @@ const config = {
 
       navbar: {
         title: 'ZeroPointNine站',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/favicon.ico',
-        },
         items: [
           {
             type: 'docSidebar',
@@ -114,8 +110,13 @@ const config = {
             label: '📗Wiki',
           },
           {
-            href: 'https://sysnow.xyz/',
-            label: '友链',
+            to: '/bookmarks',
+            label: '📑导航',
+            position: 'right',
+          },
+          {
+            to: '/friends',
+            label: '🔗友链',
             position: 'right',
           },
         ],
@@ -166,14 +167,6 @@ const config = {
       tableOfContents: {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
-      },
-      announcementBar: {
-        id: 'zero_point_nine_repo',
-        content:
-          '🟫 当前站点源码仓库：<a target="_blank" rel="noopener noreferrer" href="https://github.com/taohuayao8844/taohuayao8844.github.io">GitHub</a>',
-        backgroundColor: '#f4ece3',
-        textColor: '#4a3426',
-        isCloseable: false,
       },
       metadata: [
         {

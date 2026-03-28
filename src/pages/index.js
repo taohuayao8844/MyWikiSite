@@ -1,48 +1,126 @@
 import React from 'react'
 import Layout from '@theme/Layout'
-import Link from '@docusaurus/Link'
 import styles from './index.module.css'
 
-function MyHero() {
-  return (
-    <section className={styles.myHeroContainer}>
-      <div className={styles.leftContainer}>
-        <h1 className={styles.leftContainer_h1}>
-          Hellow，我是 0.9，
-          <br />
-          一个三分钟热度的大三学生 👋
-        </h1>
-        <p className={styles.leftContainer_p}>
-          叹隙中驹，石中火，梦中身。
-          <br />
-          欢迎来到我的博客。
-          <br />
-          爱好整点摄影和羽毛球玩玩，是一个不卷绩点的理想主义者。
-          <br />
-          浙江某所“冲击双一流”高校在读，通信工程专业，殊途同归走向计算机。
-        </p>
-        <div className={styles.buttonContainer}>
-          <button className={styles.button}>
-            <Link className={styles.hero_a} to='/'>
-              进入首页
-            </Link>
-          </button>
-          <span className={styles.buttonLeftText}>
-            ZERO_POINT_NINE
-            <br />
-            记录学习、生活与思考。
-          </span>
-        </div>
-      </div>
-    </section>
-  )
-}
+const socialPlatformList = [
+  {
+    label: 'GitHub',
+    href: 'https://github.com/taohuayao8844',
+    icon: '📱',
+  },
+  {
+    label: 'Bilibili',
+    href: 'https://space.bilibili.com/396104992',
+    icon: '📺',
+  },
+  {
+    label: '微博',
+    href: 'https://weibo.com/u/5920416195',
+    icon: '📡',
+  },
+]
+
+const profileHighlightList = [
+  {
+    label: '身份',
+    value: '已摆烂的折腾爱好者',
+  },
+  {
+    label: '状态',
+    value: '理想主义在线',
+  },
+  {
+    label: '偏好',
+    value: '我是摄影佬',
+  },
+]
 
 export default function Home() {
   return (
-    <Layout title='Home' description='ZeroPointNine 个人网站首页'>
-      <main>
-        <MyHero />
+    <Layout title='ZeroPointNine' description='个人主页'>
+      <main className={styles.homeContainer}>
+        <div className={styles.backgroundBlur}></div>
+        <div className={styles.backgroundGlow}></div>
+
+        <section className={styles.heroShell}>
+          <div className={styles.heroPanel}>
+            <div className={styles.identityBlock}>
+              <div className={styles.identityProfile}>
+                <div className={styles.avatarWrapper}>
+                  <div className={styles.avatarHalo}></div>
+                  <img
+                    src='/person/touxiang.jpg'
+                    alt='头像'
+                    className={styles.avatar}
+                  />
+                </div>
+
+                <div className={styles.identityText}>
+                  <h1 className={styles.name}>ZERO_POINT_NINE</h1>
+                  <p className={styles.tagline}>叹隙中驹，石中火，梦中身</p>
+                </div>
+              </div>
+
+              <div className={styles.welcomePanel}>
+                <span className={styles.welcomeLabel}>WELCOME</span>
+                <h2 className={styles.welcomeTitle}>欢迎来到 0.9 的个人博客</h2>
+                <p className={styles.welcomeSubtitle}>
+                  记录学习、折腾、生活与一些仍然发光的想法。
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.contentGrid}>
+              <article className={styles.introductionCard}>
+                <div className={styles.cardLabel}>ABOUT ME</div>
+                <div className={styles.description}>
+                  <p>你好，我是 0.9，一个三分钟热度的大三学生 👋</p>
+                  <p>爱好整点摄影和羽毛球玩玩，是一个不卷绩点的理想主义者。</p>
+                  <p>浙江某所“冲击双一流”高校在读，通信工程专业，殊途同归走向计算机。</p>
+                </div>
+
+                <div className={styles.socialLinks}>
+                  {socialPlatformList.map((socialPlatform) => (
+                    <a
+                      key={socialPlatform.label}
+                      href={socialPlatform.href}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className={styles.socialLink}
+                    >
+                      <span className={styles.socialIcon}>
+                        {socialPlatform.icon}
+                      </span>
+                      <span>{socialPlatform.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </article>
+
+              <aside className={styles.infoColumn}>
+                <div className={styles.profileCard}>
+                  <div className={styles.cardLabel}>PROFILE SNAPSHOT</div>
+                  <div className={styles.profileList}>
+                    {profileHighlightList.map((profileHighlight) => (
+                      <div
+                        key={profileHighlight.label}
+                        className={styles.profileItem}
+                      >
+                        <span className={styles.profileItemLabel}>
+                          {profileHighlight.label}
+                        </span>
+                        <strong className={styles.profileItemValue}>
+                          {profileHighlight.value}
+                        </strong>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </aside>
+
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   )

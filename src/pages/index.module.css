@@ -1,188 +1,729 @@
 /**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
+ * 首页样式 - 透明灰悬浮布局
  */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+.homeContainer {
+  --home-surface: rgba(20, 24, 31, 0.68);
+  --home-surface-strong: rgba(17, 20, 27, 0.82);
+  --home-surface-soft: rgba(255, 255, 255, 0.06);
+  --home-border: rgba(255, 255, 255, 0.12);
+  --home-border-strong: rgba(255, 255, 255, 0.2);
+  --home-text-primary: rgba(245, 247, 250, 0.95);
+  --home-text-secondary: rgba(214, 220, 228, 0.78);
+  --home-text-muted: rgba(185, 192, 201, 0.62);
+  --home-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
+  --home-highlight: rgba(255, 255, 255, 0.18);
+  min-height: calc(100vh - var(--ifm-navbar-height));
   position: relative;
   overflow: hidden;
-}
-
-@media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 2rem;
-  }
-}
-
-.buttons {
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  background:
+    radial-gradient(circle at top left, rgba(122, 130, 145, 0.18), transparent 34%),
+    radial-gradient(circle at 85% 18%, rgba(160, 167, 180, 0.12), transparent 28%),
+    linear-gradient(145deg, #12151b 0%, #171b22 38%, #0f1218 100%);
 }
 
-/* ----------------------------------------------------- */
-/* myCustomCSS */
-.myHeroContainer {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-direction: row;
-  background-color: #f5f4f4;
-  width: 100%;
-  overflow: hidden;
-  padding: 2.5rem 6rem;
-}
-.leftContainer {
-  padding: 3rem 0 0 1rem;
-  font-size: 40px;
-  flex: 2;
-}
-.rightContainer {
-  /* width: 70%; */
-  flex: 1.7;
-}
-
-.rightContainer img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.leftContainer_h1 {
-  color: rgb(58, 58, 58);
-  font-size: 4rem;
-}
-.leftContainer_p {
-  color: #565451;
-  font-size: 1.5rem;
-}
-.buttonContainer {
-  display: flex;
-  flex-direction: row;
-  /* justify-content: center; */
-  align-items: center;
-  margin-top: 4rem;
-  width: 20rem;
-  flex-wrap: wrap;
-  row-gap: 2rem;
-}
-
-.button {
-  padding: 0.6rem 2rem;
-  background-color: #ffae33;
-  color: white;
-  border: none;
-  border-radius: 0.6rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-.button:hover {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-}
-.button:active {
-  transform: scale(0.98);
-}
-
-.buttonLeftText {
-  display: inline-block;
-  margin: 0 0 10px 20px;
-  height: 2rem;
-  font-size: 0.8rem;
-  color: #565451;
-}
-.svgContainer {
-  width: 13rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-.svg {
-  /* font-size: 20px; */
-  width: 2.5rem;
-}
-.hero_a {
-  text-decoration: none;
-  color: white;
-}
-.hero_a:hover {
-  text-decoration: none;
-  color: white;
-}
-@media screen and (max-width: 966px) {
-  .myHeroContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-}
-
-/*  myNewHero */
-.parallax {
-  margin-top: 80px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-}
-.parallax img {
+.homeContainer::before {
+  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)),
+    url('/image_photo/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+  transform: scale(1.03);
+  filter: grayscale(25%) contrast(1.05);
+  z-index: 0;
   pointer-events: none;
 }
-/* #text {
+
+.homeContainer::after {
+  content: '';
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 3em;
-  color: #112434;
-} */
-
-/* my Logo */
-.container {
-  position: relative;
-  left: 150px;
-  top: -230px;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 10, 14, 0.1) 0%, rgba(8, 10, 14, 0.5) 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
-.h1 {
-  font-size: 100px;
-  width: 400px;
-  line-height: 1em;
-  letter-spacing: -0.03em;
-  position: relative;
-  /* color: white; */
-  /* height: 132px; */
-  user-select: none;
-}
-
-.h1 svg {
+.backgroundBlur {
   position: absolute;
-  bottom: -100px;
-  left: 65px;
-  z-index: -1;
+  width: 36rem;
+  height: 36rem;
+  top: -12rem;
+  right: -10rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(186, 193, 204, 0.12) 0%,
+    rgba(186, 193, 204, 0.04) 35%,
+    transparent 72%
+  );
+  filter: blur(26px);
+  z-index: 3;
+  pointer-events: none;
+  animation: floatBlur 18s ease-in-out infinite;
 }
 
-#tick {
-  stroke-dasharray: 210px;
-  stroke-dashoffset: 210px;
-  animation: 3s tick ease-in-out infinite;
+.backgroundGlow {
+  position: absolute;
+  left: -8rem;
+  bottom: -10rem;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(146, 153, 167, 0.16) 0%,
+    rgba(146, 153, 167, 0.04) 42%,
+    transparent 74%
+  );
+  filter: blur(34px);
+  z-index: 3;
+  pointer-events: none;
+  animation: floatBlur 22s ease-in-out infinite reverse;
 }
 
-@keyframes tick {
+@keyframes floatBlur {
   0%,
-  50% {
-    stroke-dashoffset: 210px;
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
-  50%,
-  100% {
-    stroke-dashoffset: 0px;
+  50% {
+    transform: translate3d(1.2rem, -1rem, 0) scale(1.05);
   }
+}
+
+.heroShell {
+  position: relative;
+  z-index: 4;
+  width: min(1160px, 100%);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.heroPanel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  border: 1px solid var(--home-border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    var(--home-surface);
+  backdrop-filter: blur(26px) saturate(120%);
+  -webkit-backdrop-filter: blur(26px) saturate(120%);
+  box-shadow:
+    var(--home-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.11);
+  padding: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+.heroPanel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.08), transparent 26%),
+    linear-gradient(320deg, rgba(255, 255, 255, 0.02), transparent 30%);
+  pointer-events: none;
+}
+
+.identityBlock {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(1.6rem, 3vw, 3.2rem);
+  padding-bottom: clamp(1.3rem, 3vw, 2rem);
+  margin-bottom: clamp(1.3rem, 2vw, 1.8rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.identityProfile {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.2rem, 2.5vw, 2.2rem);
+  min-width: 0;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: clamp(132px, 18vw, 196px);
+  height: clamp(132px, 18vw, 196px);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.avatarHalo {
+  position: absolute;
+  inset: 50%;
+  width: 130%;
+  height: 130%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.03) 48%, transparent 72%);
+  filter: blur(14px);
+}
+
+.avatar {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.identityText {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.welcomePanel {
+  position: relative;
+  min-height: clamp(220px, 28vw, 300px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.14), transparent 24%),
+    radial-gradient(circle at 80% 35%, rgba(187, 205, 255, 0.18), transparent 26%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(11, 14, 20, 0.48);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(214, 226, 255, 0.08);
+  overflow: hidden;
+}
+
+.welcomePanel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%);
+  opacity: 0.3;
+  transform: translateX(-35%);
+  pointer-events: none;
+}
+
+.welcomePanel::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.welcomeLabel,
+.welcomeTitle,
+.welcomeSubtitle {
+  position: relative;
+  z-index: 1;
+}
+
+.welcomeLabel {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  padding: 0.42rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(232, 238, 248, 0.78);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.06);
+}
+
+.welcomeTitle {
+  margin: 0;
+  color: #f8fbff;
+  font-size: clamp(1.75rem, 3.2vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: 0.05em;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.24),
+    0 0 28px rgba(201, 220, 255, 0.18),
+    0 0 60px rgba(201, 220, 255, 0.08);
+}
+
+.welcomeSubtitle {
+  max-width: 34rem;
+  margin: 1rem 0 0;
+  color: rgba(226, 232, 241, 0.8);
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--home-text-muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+}
+
+.name {
+  margin: 0;
+  color: var(--home-text-primary);
+  font-size: clamp(1.8rem, 3.8vw, 3.15rem);
+  line-height: 1.04;
+  letter-spacing: 0.06em;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.tagline {
+  margin: 0.95rem 0 0;
+  color: var(--home-text-secondary);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  letter-spacing: 0.08em;
+}
+
+.contentGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.9fr);
+  gap: 1.15rem;
+  align-items: start;
+}
+
+.introductionCard,
+.profileCard,
+.githubCalendarCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    rgba(12, 15, 21, 0.54);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.introductionCard::before,
+.profileCard::before,
+.githubCalendarCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 32%);
+  pointer-events: none;
+}
+
+.introductionCard {
+  border-radius: 26px;
+  padding: 1.5rem;
+}
+
+.profileCard,
+.githubCalendarCard {
+  border-radius: 24px;
+  padding: 1.35rem;
+}
+
+.cardLabel {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+  color: var(--home-text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.description {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.description p {
+  margin: 0;
+  color: var(--home-text-secondary);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.socialLinks {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.8rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--home-text-primary);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    background-color 0.24s ease,
+    box-shadow 0.24s ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.socialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+}
+
+.infoColumn {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.profileList {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.95rem;
+}
+
+.profileItem {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.profileItemLabel {
+  color: var(--home-text-muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+.profileItemValue {
+  color: var(--home-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.githubCalendarCard {
+  grid-column: 1 / -1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 26%),
+    radial-gradient(circle at left center, rgba(182, 194, 214, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(12, 15, 21, 0.62);
+  box-shadow:
+    0 24px 52px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.githubCalendarCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.githubCalendarCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 38%);
+  pointer-events: none;
+}
+
+.githubCalendarDescription {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: -0.1rem 0 1rem;
+  color: var(--home-text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.githubCalendar {
+  position: relative;
+  z-index: 1;
+  overflow-x: auto;
+  padding: 1.3rem 1.2rem 1.05rem;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    rgba(8, 10, 14, 0.4);
+  color: var(--home-text-secondary);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+}
+
+.githubCalendar :global(.calendar) {
+  width: 100%;
+  min-width: 680px;
+}
+
+.githubCalendar :global(.contrib-column),
+.githubCalendar :global(.contrib-number),
+.githubCalendar :global(.float-left.text-muted),
+.githubCalendar :global(.float-right.text-muted),
+.githubCalendar :global(.month),
+.githubCalendar :global(.wday) {
+  color: var(--home-text-muted);
+}
+
+.githubCalendar :global(.contrib-legend),
+.githubCalendar :global(.contrib-footer),
+.githubCalendar :global(.calendar .width-full > .float-left.text-muted),
+.githubCalendar :global(.calendar .width-full > .float-right.text-muted),
+.githubCalendar :global(a) {
+  display: none !important;
+}
+
+.githubCalendar :global(text) {
+  fill: rgba(214, 220, 228, 0.72);
+}
+
+.githubCalendar :global(rect.day) {
+  rx: 4px;
+  ry: 4px;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 0.65px;
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.githubCalendar :global(rect.day:hover) {
+  opacity: 1;
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.githubCalendar :global(.ContributionCalendar-day[data-level='0']),
+.githubCalendar :global(rect[data-level='0']) {
+  fill: rgba(255, 255, 255, 0.05);
+}
+
+.githubCalendar :global(.ContributionCalendar-day[data-level='1']),
+.githubCalendar :global(rect[data-level='1']) {
+  fill: rgba(141, 154, 178, 0.28);
+}
+
+.githubCalendar :global(.ContributionCalendar-day[data-level='2']),
+.githubCalendar :global(rect[data-level='2']) {
+  fill: rgba(155, 170, 198, 0.46);
+}
+
+.githubCalendar :global(.ContributionCalendar-day[data-level='3']),
+.githubCalendar :global(rect[data-level='3']) {
+  fill: rgba(176, 192, 218, 0.7);
+}
+
+.githubCalendar :global(.ContributionCalendar-day[data-level='4']),
+.githubCalendar :global(rect[data-level='4']) {
+  fill: rgba(215, 228, 248, 0.92);
+}
+
+@media screen and (max-width: 996px) {
+  .homeContainer {
+    padding-top: 1.5rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .identityBlock {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    text-align: left;
+  }
+
+  .identityProfile {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .welcomePanel {
+    min-height: auto;
+  }
+
+  .welcomeLabel {
+    align-self: center;
+  }
+
+  .welcomeTitle,
+  .welcomeSubtitle {
+    text-align: center;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .name {
+    font-size: clamp(1.72rem, 5vw, 2.65rem);
+    letter-spacing: 0.04em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homeContainer {
+    min-height: calc(100vh - var(--ifm-navbar-height));
+    padding-inline: 0.85rem;
+  }
+
+  .heroPanel {
+    border-radius: 24px;
+    padding: 1.15rem;
+  }
+
+  .identityBlock {
+    gap: 1.2rem;
+    padding-bottom: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .introductionCard,
+  .profileCard,
+  .githubCalendarCard {
+    border-radius: 20px;
+  }
+
+  .introductionCard,
+  .profileCard,
+  .githubCalendarCard {
+    padding: 1.1rem;
+  }
+
+  .socialLinks {
+    gap: 0.7rem;
+  }
+
+  .socialLink {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .githubCalendar {
+    padding: 0.85rem 0.8rem 0.7rem;
+    border-radius: 16px;
+  }
+
+  .githubCalendar :global(.calendar) {
+    min-width: 560px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .homeContainer {
+    padding-inline: 0.7rem;
+  }
+
+  .name {
+    font-size: 1.24rem;
+    letter-spacing: 0.03em;
+  }
+
+  .tagline {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .description p,
+  .githubCalendarDescription {
+    font-size: 0.92rem;
+  }
+
+  .eyebrow,
+  .cardLabel {
+    letter-spacing: 0.14em;
+  }
+}
+
+[data-theme='light'] .homeContainer {
+  --home-surface: rgba(28, 33, 43, 0.64);
+  --home-surface-strong: rgba(17, 20, 27, 0.8);
+  --home-surface-soft: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .homeContainer {
+  background:
+    radial-gradient(circle at top left, rgba(109, 118, 138, 0.2), transparent 34%),
+    radial-gradient(circle at 85% 18%, rgba(168, 176, 191, 0.1), transparent 28%),
+    linear-gradient(145deg, #090b11 0%, #11141a 42%, #090b10 100%);
+}
+
+[data-theme='dark'] .homeContainer::before {
+  opacity: 0.06;
+}
+
+[data-theme='dark'] .heroPanel,
+[data-theme='dark'] .introductionCard,
+[data-theme='dark'] .profileCard,
+[data-theme='dark'] .githubCalendarCard {
+  border-color: rgba(255, 255, 255, 0.08);
 }
