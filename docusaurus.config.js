@@ -1,6 +1,7 @@
 // @ts-nocheck
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const path = require('path')
 const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 const oceanicNext = require('prism-react-renderer/themes/oceanicNext')
@@ -73,6 +74,37 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: false,
+        docsRouteBasePath: '/',
+        blogRouteBasePath: '/blog',
+        language: ['zh', 'en'],
+        hashed: 'filename',
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        searchBarPosition: 'right',
+      },
+    ],
+    function searchPageAliasPlugin() {
+      return {
+        name: 'search-page-alias-plugin',
+        configureWebpack() {
+          return {
+            resolve: {
+              alias: {
+                '@theme/SearchPage': path.resolve(__dirname, './src/theme/SearchPage/index.js'),
+              },
+            },
+          }
+        },
+      }
+    },
+  ],
 
   // 添加 KaTeX CSS 样式
   stylesheets: [
@@ -87,36 +119,26 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      algolia: {
-        // The application ID provided by Algolia
-        appId: 'L4NYMVDYG7',
-
-        // Public API key: it is safe to commit it
-        apiKey: '2dc197c65a9a3bc16515f64933bb50b5',
-
-        indexName: 'wiki-404lab-top',
-
-        // Optional: see doc section below
-        // contextualSearch: true,
-      },
-
       navbar: {
         title: 'ZeroPointNine站',
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'right',
+            to: '/A_%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2',
             label: '📗Wiki',
+            position: 'left',
           },
           {
             to: '/bookmarks',
             label: '📑导航',
-            position: 'right',
+            position: 'left',
           },
           {
             to: '/friends',
             label: '🔗友链',
+            position: 'left',
+          },
+          {
+            type: 'search',
             position: 'right',
           },
         ],
@@ -129,7 +151,15 @@ const config = {
             items: [
               {
                 label: 'Wiki',
-                to: '/intro',
+                to: '/A_%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2',
+              },
+              {
+                label: '导航',
+                to: '/bookmarks',
+              },
+              {
+                label: '友链',
+                to: '/friends',
               },
             ],
           },
