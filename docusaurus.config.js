@@ -138,6 +138,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/files',
+            label: '📁文件',
+            position: 'left',
+          },
+          {
             to: '/friends',
             label: '🔗友链',
             position: 'left',
