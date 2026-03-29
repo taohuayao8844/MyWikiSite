@@ -128,6 +128,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/blog',
+            label: '📝博客',
+            position: 'left',
+          },
+          {
             to: '/bookmarks',
             label: '📑导航',
             position: 'left',

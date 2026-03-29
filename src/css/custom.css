@@ -653,6 +653,7 @@ html[data-theme='dark'] .theme-doc-markdown strong {
     pointer-events: none;
     z-index: 31;
     overflow: hidden;
+    touch-action: pan-y;
     border-right: 1px solid rgba(122, 134, 152, 0.16);
     border-radius: 20px;
     background:
@@ -674,9 +675,26 @@ html[data-theme='dark'] .theme-doc-markdown strong {
   .theme-doc-sidebar-menu {
     flex: 1 1 auto;
     min-height: 0;
+    max-height: 100%;
     padding: 0.75rem;
+    overflow-x: hidden;
     overflow-y: auto;
-    overscroll-behavior: contain;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  .mobile-doc-sidebar-shell--mobile .theme-doc-sidebar-container .thin-scrollbar,
+  .mobile-doc-sidebar-shell--mobile .theme-doc-sidebar-container .theme-doc-sidebar-menu,
+  .mobile-doc-sidebar-shell--mobile .theme-doc-sidebar-container .menu {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 
   .theme-doc-sidebar-item-link,
