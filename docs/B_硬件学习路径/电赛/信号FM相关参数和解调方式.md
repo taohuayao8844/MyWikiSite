@@ -34,8 +34,12 @@ $\omega(t) = \omega_c + k_f \cdot m(t)$
 
 ### 2. 数学表达式推导
 #### 瞬时角频率
-设基带信号为 $m(t)$，则FM信号的 **瞬时角频率** 为：  
-$$ \omega(t) = \omega_c + k_f \cdot m(t) $$  
+设基带信号为 $m(t)$，则FM信号的 **瞬时角频率** 为：
+
+$$
+\omega(t) = \omega_c + k_f \cdot m(t)
+$$
+
 - 符号说明：  
   - $\omega_c = 2\pi f_c$：载波中心角频率；  
   - **$k_f$：频率灵敏度（单位：rad/(s·V)），由调制电路决定，反映“基带信号单位幅度变化引起的角频率变化量”；**
@@ -57,12 +61,17 @@ $$ \omega(t) = \omega_c + k_f \cdot m(t) $$
 
 角频率是相位的时间导数（$\omega(t) = \frac{d\phi(t)}{dt}$），因此 **瞬时相位** 为： 
 
-$$ \phi(t) = \int_{0}^{t} \omega(\tau) d\tau = \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau $$  
+$$
+\phi(t) = \int_{0}^{t} \omega(\tau)\, d\tau
+= \omega_c t + k_f \int_{0}^{t} m(\tau)\, d\tau
+$$
 
 #### FM调制信号完整表达式
 有了瞬时相位的表达式，我们就可以构建出FM信号在时域中的完整数学表达式。一个正弦波信号的一般形式是 $s(t) = A \cos[\phi(t)]$，其中 $A$ 是恒定的幅度，$\phi(t)$ 是瞬时相位。将上一步推导出的瞬时相位代入，我们得到FM信号的通用表达式：
 
-$$ s_{\text{FM}}(t) = A \cdot \cos\left[ \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau \right] $$
+$$
+s_{\text{FM}}(t) = A \cdot \cos\left[ \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau \right]
+$$
 
 这个公式精确地描述了FM信号在任意时刻 $t$ 的波形。它清晰地展示了FM信号的三个核心特征：
 
@@ -74,11 +83,15 @@ $$ s_{\text{FM}}(t) = A \cdot \cos\left[ \omega_c t + k_f \int_{0}^{t} m(\tau) d
 
 设 $m(t) = V_m \cos(\omega_m t)$，其中 $V_m$ 是基带信号的幅度，$\omega_m = 2\pi f_m$ 是其角频率。将其代入通用表达式，积分项变为：
 
-$$ k_f \int_{0}^{t} V_m \cos(\omega_m \tau) d\tau = \frac{k_f V_m}{\omega_m} \sin(\omega_m t) $$
+$$
+k_f \int_{0}^{t} V_m \cos(\omega_m \tau) d\tau = \frac{k_f V_m}{\omega_m} \sin(\omega_m t)
+$$
 
 因此，对于单频基带信号，FM信号的表达式可以简化为：
 
-$$ s_{\text{FM}}(t) = A \cdot \cos\left[ \omega_c t + \beta_f \sin(\omega_m t) \right] $$
+$$
+s_{\text{FM}}(t) = A \cdot \cos\left[ \omega_c t + \beta_f \sin(\omega_m t) \right]
+$$
 
 其中，$\beta_f = \frac{k_f V_m}{\omega_m}$ 被定义为FM调制系数，它将在下一节中详细讨论。这个简化形式在工程分析和仿真中非常有用，因为它将复杂的积分运算转化为了一个更易于处理的正弦函数。
 
@@ -88,30 +101,43 @@ $$ s_{\text{FM}}(t) = A \cdot \cos\left[ \omega_c t + \beta_f \sin(\omega_m t) \
 
 FM调制系数，也称为**频偏比**（$\beta_f$），是一个无量纲的参数，它更深刻地揭示了FM调制的本质。调制系数定义为最大频偏 $\Delta f_{\text{max}}$ 与基带信号（要传输的信号）最高频率 $f_m$ 的比值：
 
-$$ \beta_f = \frac{\Delta f_{\text{max}}}{f_m} $$
+$$
+\beta_f = \frac{\Delta f_{\text{max}}}{f_m}
+$$
 
 这个比值综合了调制深度（由 $\Delta f_{\text{max}}$ 体现）和基带信号的特性（由 $f_m$ 体现）。将最大频偏的公式代入，可以得到调制系数的另一种表达形式，特别是在单频基带信号 $m(t) = V_m \cos(\omega_m t)$ 的情况下：
 
-$$ \beta_f = \frac{k_f V_m}{2\pi f_m} = \frac{k_f V_m}{\omega_m} $$
+$$
+\beta_f = \frac{k_f V_m}{2\pi f_m} = \frac{k_f V_m}{\omega_m}
+$$
 
 这个公式表明，调制系数不仅与调制器的灵敏度 $k_f$ 和基带信号的幅度 $V_m$ 有关，还与基带信号的频率 $f_m$ 成反比。这意味着，对于同一个调制器和同一个基带信号幅度，频率越高的基带信号分量，其对应的调制系数越小。调制系数是判断FM信号频谱特性的核心依据。它直接决定了FM信号中边频分量的数量和幅度，进而决定了信号的有效带宽。在工程实践中，$\beta_f$ 是一个比 $\Delta f_{\text{max}}$ 更具指导意义的参数，因为它将调制深度与信号带宽直接关联起来，为系统设计和性能分析提供了便利。
 
 ### 定义与核心参数
 #### 最大频偏（$\Delta f_{\text{max}}$）
-基带信号 $m(t)$ 引起的载波频率最大偏移量，即：  
-$$ \Delta f_{\text{max}} = \frac{1}{2\pi} \cdot \max\left[ k_f \cdot m(t) \right] = \frac{k_f \cdot |m(t)|_{\text{max}}}{2\pi} $$  
+基带信号 $m(t)$ 引起的载波频率最大偏移量，即：
+
+$$
+\Delta f_{\text{max}} = \frac{1}{2\pi} \cdot \max\left[ k_f \cdot m(t) \right] = \frac{k_f \cdot |m(t)|_{\text{max}}}{2\pi}
+$$
+
 - 物理意义：载波频率偏离中心频率 $f_c$ 的最大范围，例如 $\Delta f_{\text{max}}=75kHz$ 表示载波频率在 $f_c-75kHz$ 到 $f_c+75kHz$ 之间波动；  
 - 若 $m(t) = V_m \cos(\omega_m t)$，则 $|m(t)|_{\text{max}}=V_m$，因此 $\Delta f_{\text{max}} = \frac{k_f V_m}{2\pi}$。
 
 #### 调制系数（$\beta_f$）的计算公式
-FM调制系数是 **最大频偏（在频域当中，距离中心频率的偏移）与基带信号最高频率的比值**，即：  
-$$ \beta_f = \frac{\Delta f_{\text{max}}}{f_m} $$  
+FM调制系数是 **最大频偏（在频域当中，距离中心频率的偏移）与基带信号最高频率的比值**，即：
+
+$$
+\beta_f = \frac{\Delta f_{\text{max}}}{f_m}
+$$
 
 - 符号说明：$f_m$ 是基带信号的最高频率（如语音信号 $f_m \approx 3kHz$）；  
 
-- 结合单频基带信号的 $\Delta f_{\text{max}}$，可推导： ($V_m$ 是被调制信号的最大值-基带信号$\omega_m$ 是最大角频偏)
+- 结合单频基带信号的 $\Delta f_{\text{max}}$，可推导：($V_m$ 是被调制信号的最大值，$\omega_m$ 是基带信号角频率)
 
-  $$ \beta_f = \frac{k_f V_m}{2\pi f_m} = \frac{k_f V_m}{\omega_m} $$  
+  $$
+  \beta_f = \frac{k_f V_m}{2\pi f_m} = \frac{k_f V_m}{\omega_m}
+  $$
 
 ### 物理意义与取值范围
 - $\beta_f$ 是无量纲参数，反映调制深度：  
@@ -127,12 +153,18 @@ $$ \beta_f = \frac{\Delta f_{\text{max}}}{f_m} $$
 为了更好地理解调制系数的计算和应用，我们来看一个具体的例子。假设我们有一个基带信号 $m(t) = 2\cos(2\pi \times 3000t)$，其幅度 $V_m = 2V$，频率 $f_m = 3kHz$。我们使用的调制器频率灵敏度为 $k_f = 2\pi \times 10^5$ rad/(s·V)。
 
 首先，我们计算最大频偏 $\Delta f_{\text{max}}$：
-$$ \Delta f_{\text{max}} = \frac{k_f \cdot |m(t)|_{\text{max}}}{2\pi} = \frac{(2\pi \times 10^5) \times 2}{2\pi} = 2 \times 10^5 \text{ Hz} = 200 \text{ kHz} $$
+
+$$
+\Delta f_{\text{max}} = \frac{k_f \cdot |m(t)|_{\text{max}}}{2\pi} = \frac{(2\pi \times 10^5) \times 2}{2\pi} = 2 \times 10^5 \text{ Hz} = 200 \text{ kHz}
+$$
 
 这个结果表明，载波频率将在中心频率的基础上，根据基带信号的幅度，在 $\pm 200kHz$ 的范围内变化。
 
 接下来，我们计算调制系数 $\beta_f$：
-$$ \beta_f = \frac{\Delta f_{\text{max}}}{f_m} = \frac{200 \text{ kHz}}{3 \text{ kHz}} \approx 66.7 $$
+
+$$
+\beta_f = \frac{\Delta f_{\text{max}}}{f_m} = \frac{200 \text{ kHz}}{3 \text{ kHz}} \approx 66.7
+$$
 
 计算得到的调制系数 $\beta_f \approx 66.7$ 远大于1，因此这是一个典型的**宽带FM（WBFM）** 信号。如此大的调制指数意味着该FM信号具有非常强的抗噪声能力，但同时也会占用非常宽的频谱。根据卡森带宽规则，其近似带宽为 $B \approx 2(\Delta f_{\text{max}} + f_m) = 2(200kHz + 3kHz) = 406kHz$。这个例子清晰地展示了调制系数如何量化调制深度，并帮助我们判断信号的频谱特性和适用场景。
 
@@ -209,27 +241,39 @@ $$
 
 从数学角度看，鉴频法可以通过对FM信号进行微分来实现。标准的FM信号表达式为：
 
-$$ s_{\text{FM}}(t) = A \cos\left[ \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau \right] $$
+$$
+s_{\text{FM}}(t) = A \cos\left[ \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau \right]
+$$
 
 对该信号求时间导数，得到：
 
-$$ \frac{ds_{\text{FM}}(t)}{dt} = -A \left[ \omega_c + k_f m(t) \right] \sin\left[ \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau \right] $$
+$$
+\frac{ds_{\text{FM}}(t)}{dt} = -A \left[ \omega_c + k_f m(t) \right] \sin\left[ \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau \right]
+$$
 
 这个表达式可以被重新写成一个标准的AM信号形式。令：
 
-$$ \theta(t) = \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau $$
+$$
+\theta(t) = \omega_c t + k_f \int_{0}^{t} m(\tau) d\tau
+$$
 
 则上式变为：
 
-$$ \frac{ds_{\text{FM}}(t)}{dt} = A \left[ \omega_c + k_f m(t) \right] \sin\left[ \theta(t) - \frac{\pi}{2} \right] $$
+$$
+\frac{ds_{\text{FM}}(t)}{dt} = A \left[ \omega_c + k_f m(t) \right] \sin\left[ \theta(t) - \frac{\pi}{2} \right]
+$$
 
 在这里，信号的包络（幅度）是：
 
-$$ A\left[ \omega_c + k_f m(t) \right] $$
+$$
+A\left[ \omega_c + k_f m(t) \right]
+$$
 
 它直接与基带信号 $m(t)$ 成线性关系。而信号的相位部分：
 
-$$ \sin\left[ \theta(t) - \frac{\pi}{2} \right] $$
+$$
+\sin\left[ \theta(t) - \frac{\pi}{2} \right]
+$$
 
 仍然保留了FM的特性。因此，经过微分器后，原始的FM波被转换成了一个幅度和频率都随 $m(t)$ 变化的调幅-调频（AM-FM）波。
 
@@ -264,7 +308,9 @@ $$ \sin\left[ \theta(t) - \frac{\pi}{2} \right] $$
 
 💡 核心关系链：
 
-$$ m(t) \propto \Delta f(t) \propto \Delta \phi(t) \propto \Delta V(t) $$
+$$
+m(t) \propto \Delta f(t) \propto \Delta \phi(t) \propto \Delta V(t)
+$$
 
 两次转换的线性度直接决定解调性能。
 
@@ -276,7 +322,9 @@ $$ m(t) \propto \Delta f(t) \propto \Delta \phi(t) \propto \Delta V(t) $$
 - **中心频率预设相移**：在回路谐振频率 $\omega_c$ 处，通过耦合方式（如互感极性）预设固定相移 $\phi_0 = \pi/2$（90°），确保工作点位于相频特性的线性区。
 - **频偏后的总相移**：当输入FM信号的瞬时角频率为 $\omega = \omega_c + \Delta \omega$ 时，回路产生的附加相移与 $\Delta \omega$ 线性相关，总相移为：
 
-  $$ \theta(\omega) = \frac{\pi}{2} + k \cdot \Delta \omega $$
+  $$
+  \theta(\omega) = \frac{\pi}{2} + k \cdot \Delta \omega
+  $$
 
   此时，FM信号的频率变化被完整映射为相位变化，经过该网络的信号成为“调频-调相波（FM-PM波）”，完成相移乘法鉴频的关键前置转换。
 
@@ -298,18 +346,24 @@ $$ m(t) \propto \Delta f(t) \propto \Delta \phi(t) \propto \Delta V(t) $$
 - 相移信号（FM-PM波）：$V_2(t) = A \cdot \cos[\omega t + \phi(t) + \theta(\omega)]$（$\theta(\omega)$ 为频率相关相移）；
 - 合成信号：$V_{sum}(t) = V_1(t) + V_2(t)$，利用三角恒等式化简为：
 
-  $$ V_{sum}(t) = R \cdot \cos[\omega t + \phi(t) + \alpha] $$
+  $$
+  V_{sum}(t) = R \cdot \cos[\omega t + \phi(t) + \alpha]
+  $$
 
   其中合成幅度 $R$ 为：
 
-  $$ R = \sqrt{A^2 + A^2 + 2A^2 \cdot \cos\theta(\omega)} = A \cdot \sqrt{2(1+\cos\theta(\omega))} $$
+  $$
+  R = \sqrt{A^2 + A^2 + 2A^2 \cdot \cos\theta(\omega)} = A \cdot \sqrt{2(1+\cos\theta(\omega))}
+  $$
 
 ##### 非线性问题与差分改进
 代入 $\theta(\omega) = \frac{\pi}{2} + k\Delta \omega$，得 $R = A \cdot \sqrt{2(1 - \sin(k\Delta \omega))}$。小频偏下 $\sin(k\Delta \omega) \approx k\Delta \omega$，$R$ 与 $\Delta \omega$ 呈非线性关系。工程中通过“差分检波”优化：
 
 同时对 $V_1+V_2$ 和 $V_1-V_2$ 进行包络检波，输出两路检波电压的差值：
 
-$$ V_{out} \propto \cos\theta(\omega) = -\sin(k\Delta \omega) \approx -k\Delta \omega $$
+$$
+V_{out} \propto \cos\theta(\omega) = -\sin(k\Delta \omega) \approx -k\Delta \omega
+$$
 
 此时输出与 $\Delta f$ 线性相关，解决非线性问题。
 
@@ -319,18 +373,24 @@ $$ V_{out} \propto \cos\theta(\omega) = -\sin(k\Delta \omega) \approx -k\Delta \
 #####  核心原理：乘法器的相位比较作用
 将参考信号 $V_1(t)$ 与 FM-PM 波 $V_2(t)$ 输入乘法器，利用三角函数积化和差特性，乘法器输出为：
 
-$$ V_{mul}(t) = V_1(t) \cdot V_2(t) = \frac{A^2}{2}\{\cos[2\omega t + 2\phi(t) + \theta(\omega)] + \cos\theta(\omega)\} $$
+$$
+V_{mul}(t) = V_1(t) \cdot V_2(t) = \frac{A^2}{2}\{\cos[2\omega t + 2\phi(t) + \theta(\omega)] + \cos\theta(\omega)\}
+$$
 
 其中包含 $2\omega$ 的高频载波分量和 $\cos\theta(\omega)$ 的低频相位信息分量。
 
 ##### 线性解调的实现
 通过低通滤波器滤除 $2\omega$ 高频分量，仅保留低频分量：
 
-$$ V_{out}(t) = \frac{A^2}{2} \cdot \cos\theta(\omega) $$
+$$
+V_{out}(t) = \frac{A^2}{2} \cdot \cos\theta(\omega)
+$$
 
 代入 $\theta(\omega) = \frac{\pi}{2} + k\Delta \omega$，得 $V_{out} = -\frac{A^2}{2} \cdot \sin(k\Delta \omega)$。小频偏下 $\sin(k\Delta \omega) \approx k\Delta \omega$，且 $\Delta \omega = 2\pi\Delta f \propto m(t)$，最终输出：
 
-$$ V_{out} \approx -\frac{A^2}{2} \cdot k \cdot 2\pi\Delta f = K_d \cdot \Delta f \propto m(t) $$
+$$
+V_{out} \approx -\frac{A^2}{2} \cdot k \cdot 2\pi\Delta f = K_d \cdot \Delta f \propto m(t)
+$$
 
 其中 $K_d = -\pi A^2k$ 为鉴频灵敏度（常数），实现 $\Delta f$ 到 $\Delta V$ 的完美线性转换。
 
@@ -341,14 +401,25 @@ $$ V_{out} \approx -\frac{A^2}{2} \cdot k \cdot 2\pi\Delta f = K_d \cdot \Delta 
 - 参考信号：$V_{ref}(t) = A \cos(\omega t + \phi(t))$；
 - 相移信号：$V_{shift}(t) = B \cos(\omega t + \phi(t) + \theta(\omega))$（$\theta(\omega)$为相移网络产生的频率相关相移）。
 
-两路信号叠加得到合成信号$V_{sum}(t)$：
-$$ V_{\text{sum}}(t) = V_{\text{ref}}(t) + V_{\text{shift}}(t) = A \cos(\omega t + \phi(t)) + B \cos(\omega t + \phi(t) + \theta(\omega)) $$
-利用三角恒等式化简为：
-$$ V_{\text{sum}}(t) = R \cos(\omega t + \phi(t) + \alpha) $$
-其中合成信号的幅度$R$为：
-$$ R = \sqrt{A^2 + B^2 + 2AB \cos(\theta(\omega))} $$
+两路信号叠加得到合成信号 $V_{sum}(t)$：
 
-合成幅度$R$直接取决于相位差$\theta(\omega)$，而$\theta(\omega)$与频率$\omega$线性相关（$\theta(\omega) \approx k \cdot \Delta \omega$），因此$R$随频率变化。小角度下$\cos(\theta(\omega)) \approx 1 - \frac{(\theta(\omega))^2}{2}$，$R$与$\Delta \omega$呈非线性关系，需通过乘积型鉴频器（乘法器+低通滤波）优化，最终得到与$\theta(\omega)$或$\Delta \omega$成正比的线性输出。
+$$
+V_{\text{sum}}(t) = V_{\text{ref}}(t) + V_{\text{shift}}(t) = A \cos(\omega t + \phi(t)) + B \cos(\omega t + \phi(t) + \theta(\omega))
+$$
+
+利用三角恒等式化简为：
+
+$$
+V_{\text{sum}}(t) = R \cos(\omega t + \phi(t) + \alpha)
+$$
+
+其中合成信号的幅度 $R$ 为：
+
+$$
+R = \sqrt{A^2 + B^2 + 2AB \cos(\theta(\omega))}
+$$
+
+合成幅度 $R$ 直接取决于相位差 $\theta(\omega)$，而 $\theta(\omega)$ 与频率 $\omega$ 线性相关（$\theta(\omega) \approx k \cdot \Delta \omega$），因此 $R$ 随频率变化。小角度下 $\cos(\theta(\omega)) \approx 1 - \frac{(\theta(\omega))^2}{2}$，$R$ 与 $\Delta \omega$ 呈非线性关系，需通过乘积型鉴频器（乘法器+低通滤波）优化，最终得到与 $\theta(\omega)$ 或 $\Delta \omega$ 成正比的线性输出。
 
 ## 脉冲计数鉴频
 

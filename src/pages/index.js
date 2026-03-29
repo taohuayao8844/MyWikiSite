@@ -2,22 +2,23 @@ import React from 'react'
 import Layout from '@theme/Layout'
 import siteStatistics from '../data/site-statistics.json'
 import styles from './index.module.css'
+import { FaGithub, FaTv, FaRss } from 'react-icons/fa'
 
 const socialPlatformList = [
   {
     label: 'GitHub',
     href: 'https://github.com/taohuayao8844',
-    icon: '📱',
+    icon: <FaGithub />,
   },
   {
     label: 'Bilibili',
     href: 'https://space.bilibili.com/396104992',
-    icon: '📺',
+    icon: <FaTv />,
   },
   {
     label: '微博',
     href: 'https://weibo.com/u/5920416195',
-    icon: '📡',
+    icon: <FaRss />,
   },
 ]
 
@@ -90,7 +91,7 @@ export default function Home() {
               <article className={styles.introductionCard}>
                 <div className={styles.cardLabel}>关于我</div>
                 <div className={styles.description}>
-                  <p>你好，我是 0.9，一个三分钟热度的大三学生 👋</p>
+                  <p>你好，我是 0.9，一个三分钟热度的大三学生</p>
                   <p>爱好整点摄影和羽毛球玩玩，是一个不卷绩点的理想主义者。</p>
                   <p>浙江某所“冲击双一流”高校在读，通信工程专业，殊途同归走向计算机。</p>
                 </div>

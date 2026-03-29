@@ -238,12 +238,14 @@ $$
 s_{\text{product}}(t) = \left[ A + m(t) \right] \cdot \cos^2(\omega_c t)
 $$
 
-结合三角恒等式 $\cos^2(\omega_c t) = \frac{1}{2} + \frac{1}{2}\cos(2\omega_c t)$，将上式**展开分离高低频分量**：  
+结合三角恒等式 $\cos^2(\omega_c t) = \frac{1}{2} + \frac{1}{2}\cos(2\omega_c t)$，将上式**展开分离高低频分量**：
+
 $$
-\begin{align*}
-s_{\text{product}}(t) &= \left[ A + m(t) \right] \cdot \left( \frac{1}{2} + \frac{1}{2}\cos(2\omega_c t) \right) \\
-&= \underbrace{\frac{A}{2} + \frac{1}{2}m(t)}_{\text{低频分量（含基带信号）}} + \underbrace{\frac{A}{2}\cos(2\omega_c t) + \frac{1}{2}m(t)\cos(2\omega_c t)}_{\text{高频分量（倍频载波）}}
-\end{align*}
+s_{\text{product}}(t) = \left[ A + m(t) \right] \cdot \left( \frac{1}{2} + \frac{1}{2}\cos(2\omega_c t) \right)
+$$
+
+$$
+= \underbrace{\frac{A}{2} + \frac{1}{2}m(t)}_{\text{低频分量（含基带信号）}} + \underbrace{\frac{A}{2}\cos(2\omega_c t) + \frac{1}{2}m(t)\cos(2\omega_c t)}_{\text{高频分量（倍频载波）}}
 $$
 
 ## 低通滤波的核心作用：分离高低频
@@ -283,13 +285,21 @@ $$
 3. 最终通过线性变换剥离直流偏置，即可无失真还原原始基带信号 $m(t)$。  
 
 ## 完整流程数学链
+
 $$
-\begin{align*}
-s_{\text{AM}}(t) &= [A + m(t)]\cos(\omega_c t) \quad \text{（接收AM信号）} \\
-&\xrightarrow{\times \cos(\omega_c t)} s_{\text{product}}(t) = \frac{A}{2} + \frac{1}{2}m(t) + \text{高频分量} \quad \text{（相乘）} \\
-&\xrightarrow{\text{低通滤波（}f_m < f_L < 2f_c - f_m\text{）}} s_{\text{LPF}}(t) = \frac{A}{2} + \frac{1}{2}m(t) \quad \text{（滤波）} \\
-&\xrightarrow{m(t) = 2s_{\text{LPF}}(t) - A} m(t) \quad \text{（还原基带信号）}
-\end{align*}
+s_{\text{AM}}(t) = [A + m(t)]\cos(\omega_c t) \quad \text{（接收AM信号）}
+$$
+
+$$
+s_{\text{product}}(t) = \frac{A}{2} + \frac{1}{2}m(t) + \text{高频分量} \quad \text{（相乘：}\times \cos(\omega_c t)\text{）}
+$$
+
+$$
+s_{\text{LPF}}(t) = \frac{A}{2} + \frac{1}{2}m(t) \quad \text{（低通滤波：}f_m < f_L < 2f_c - f_m\text{）}
+$$
+
+$$
+m(t) = 2s_{\text{LPF}}(t) - A \quad \text{（还原基带信号）}
 $$
 
 # 包络检波
@@ -306,14 +316,22 @@ $$
 - AD8361 的作用：测量 $s_{\text{AM}}(t)$ 的 RMS 值，利用 RMS 与包络的线性关系还原基带信号。
 
 ## RMS 与包络的推导
-计算 $s_{\text{AM}}(t)$ 的 RMS 值（有效值）：  
+计算 $s_{\text{AM}}(t)$ 的 RMS 值（有效值）：
+
 $$
-\begin{align*}
-\text{RMS} &= \sqrt{\frac{1}{T} \int_0^T s_{\text{AM}}^2(t) dt} \\
-&= \sqrt{\frac{1}{T} \int_0^T [A + m(t)]^2 \cos^2(\omega_c t) dt} \\
-&\approx [A + m(t)] \cdot \sqrt{\frac{1}{T} \int_0^T \cos^2(\omega_c t) dt} \quad (\text{因 } m(t) \text{ 带宽远小于载波频率，可视为慢变信号}) \\
-&= [A + m(t)] \cdot \frac{\sqrt{2}}{2} \quad (\text{因 } \cos^2(\omega_c t) \text{ 的均值为 } 1/2)
-\end{align*}
+\text{RMS} = \sqrt{\frac{1}{T} \int_0^T s_{\text{AM}}^2(t) dt}
+$$
+
+$$
+= \sqrt{\frac{1}{T} \int_0^T [A + m(t)]^2 \cos^2(\omega_c t) dt}
+$$
+
+$$
+\approx [A + m(t)] \cdot \sqrt{\frac{1}{T} \int_0^T \cos^2(\omega_c t) dt} \quad (\text{因 } m(t) \text{ 带宽远小于载波频率，可视为慢变信号})
+$$
+
+$$
+= [A + m(t)] \cdot \frac{\sqrt{2}}{2} \quad (\text{因 } \cos^2(\omega_c t) \text{ 的均值为 } 1/2)
 $$
 
 AD8361 输出直流电压 $V_{\text{out}}$ 与 RMS 成正比：  
@@ -423,10 +441,11 @@ $$ |\cos(\omega_c t)| = \frac{2}{\pi} - \frac{4}{3\pi}\cos(2\omega_c t) + \frac{
 ### 步骤2：代入整流信号，分离分量  
 
 $$
-\begin{align*}
-s_{\text{rec}}(t) &= [A + m(t)] \cdot \left( \frac{2}{\pi} - \frac{4}{3\pi}\cos(2\omega_c t) + ... \right) \\
-&= \underbrace{\frac{2}{\pi}[A + m(t)]}_{\text{低频：含包络，} [0,f_m]} - \underbrace{\frac{4}{3\pi}[A + m(t)]\cos(2\omega_c t)}_{\text{高频：} [2f_c±f_m]} + ...
-\end{align*}
+s_{\text{rec}}(t) = [A + m(t)] \cdot \left( \frac{2}{\pi} - \frac{4}{3\pi}\cos(2\omega_c t) + ... \right)
+$$
+
+$$
+= \underbrace{\frac{2}{\pi}[A + m(t)]}_{\text{低频：含包络，} [0,f_m]} - \underbrace{\frac{4}{3\pi}[A + m(t)]\cos(2\omega_c t)}_{\text{高频：} [2f_c±f_m]} + ...
 $$
 
 ### 步骤3：RC低通滤波（频域选通）  

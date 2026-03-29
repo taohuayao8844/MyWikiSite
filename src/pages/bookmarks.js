@@ -2,6 +2,13 @@ import React, { useMemo, useState } from 'react';
 import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './bookmarks.module.css';
+import { 
+  FaDesktop, FaBook, FaWrench, FaCog, FaFlask, FaPlug, FaList,
+  FaBolt, FaWifi, FaTicketAlt, FaPaw, FaUnlock, FaDatabase,
+  FaScroll, FaSave, FaSeedling, FaLightbulb, FaLinux, FaIndustry,
+  FaKey, FaUniversity, FaUser, FaLock, FaBullhorn, FaEnvelope,
+  FaGraduationCap, FaEdit, FaArrowRight, FaStar
+} from 'react-icons/fa';
 
 // 书签数据 - 可以根据需要修改
 const bookmarksData = [

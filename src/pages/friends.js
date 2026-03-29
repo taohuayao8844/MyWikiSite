@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import Layout from '@theme/Layout'
 import styles from './friends.module.css'
+import { FaStar, FaArrowRight } from 'react-icons/fa'
 
 // 友链数据
 const friendsData = [
@@ -127,13 +128,13 @@ export default function Friends() {
                     <h3 className={styles.linkName}>{link.name}</h3>
                     {link.isStarred && (
                       <span className={styles.starBadge} aria-label='星标推荐' title='星标推荐'>
-                        ★
+                        <FaStar />
                       </span>
                     )}
                   </div>
                   <p className={styles.linkDescription}>{link.description}</p>
                 </div>
-                <div className={styles.cardArrow}>→</div>
+                <div className={styles.cardArrow}><FaArrowRight /></div>
               </a>
             )
           })}
