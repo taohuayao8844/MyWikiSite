@@ -1,8 +1,13 @@
 /**
- * 网站导航页面样式
+ * 网站导航页面样式 - 统一首页社交链接风格
  */
 
 .bookmarksContainer {
+  --home-surface: rgba(20, 24, 31, 0.68);
+  --home-border: rgba(255, 255, 255, 0.12);
+  --home-text-primary: rgba(245, 247, 250, 0.95);
+  --home-text-secondary: rgba(214, 220, 228, 0.78);
+  --home-text-muted: rgba(185, 192, 201, 0.62);
   max-width: 1520px;
   margin: 0 auto;
   padding: 2rem 1.25rem 2.5rem;
@@ -29,7 +34,7 @@
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--ifm-color-primary);
+  border: 2px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -43,12 +48,13 @@
   font-size: 2.4rem;
   font-weight: 700;
   margin: 0;
-  color: var(--ifm-color-primary);
+  color: var(--home-text-primary);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
   font-size: 1rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--home-text-secondary);
   margin: 0;
 }
 
@@ -83,22 +89,24 @@
 }
 
 .tab {
-  padding: 0.45rem 1rem;
-  background: var(--ifm-color-emphasis-100);
-  border: none;
-  border-radius: 999px;
+  padding: 0.8rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--home-text-primary);
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.3s ease;
+  transition: all 0.24s ease;
   flex: 0 0 auto;
   scroll-snap-align: start;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .tab:hover {
-  background: var(--ifm-color-emphasis-200);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.22);
   transform: translateY(-2px);
 }
 
@@ -108,12 +116,13 @@
 }
 
 .activeTab {
-  background: var(--ifm-color-primary);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
   color: #ffffff;
 }
 
 .activeTab:hover {
-  background: var(--ifm-color-primary-dark);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 /* 书签网格 */
@@ -126,56 +135,49 @@
   width: 100%;
 }
 
-/* 书签卡片 */
+/* 书签卡片 - 统一首页社交链接风格 */
 .bookmarkCard {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   width: 100%;
   min-height: 100%;
-  padding: 1rem 0.95rem;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
   text-decoration: none;
-  color: inherit;
-  transition: all 0.24s ease;
+  color: var(--home-text-primary);
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    background-color 0.24s ease,
+    box-shadow 0.24s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.bookmarkCard::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-light) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .bookmarkCard:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(107, 68, 35, 0.12);
-  border-color: var(--ifm-color-primary);
-}
-
-.bookmarkCard:hover::before {
-  opacity: 0.05;
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .pinnedCard {
-  border-color: rgba(255, 170, 51, 0.45);
-  box-shadow: 0 8px 20px rgba(255, 170, 51, 0.12);
+  border-color: rgba(255, 183, 77, 0.45);
+  background: rgba(255, 183, 77, 0.08);
 }
 
 .pinnedCard::after {
   content: '置顶';
   position: absolute;
-  top: 0.65rem;
-  right: 0.75rem;
-  padding: 0.14rem 0.42rem;
+  top: 0.4rem;
+  right: 0.6rem;
+  padding: 0.15rem 0.45rem;
   border-radius: 999px;
   background: linear-gradient(135deg, #ffb347 0%, #ff8c42 100%);
   color: #ffffff;
@@ -183,20 +185,26 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   z-index: 2;
-  box-shadow: 0 4px 10px rgba(255, 140, 66, 0.22);
+  box-shadow: 0 2px 6px rgba(255, 140, 66, 0.28);
 }
 
 .starredCard .bookmarkName {
-  color: #c26b00;
+  color: #ffd166;
 }
 
 .cardIcon {
-  font-size: 1.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
   line-height: 1;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
 }
 
 .cardContent {
@@ -218,68 +226,46 @@
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
-  color: var(--ifm-color-emphasis-900);
+  color: var(--home-text-primary);
   transition: color 0.24s ease;
   line-height: 1.35;
   word-break: break-word;
 }
 
 .bookmarkCard:hover .bookmarkName {
-  color: var(--ifm-color-primary);
+  color: var(--home-text-primary);
 }
 
 .starBadge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.2rem;
-  height: 1.2rem;
-  padding: 0 0.24rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #ffd54f 0%, #ffb300 100%);
-  color: #7a4b00;
-  font-size: 0.72rem;
+  min-width: 1.65rem;
+  height: 1.65rem;
+  padding: 0 0.4rem;
+  border-radius: 50%;
+  background: rgba(255, 213, 79, 0.2);
+  color: #ffd54f;
+  font-size: 0.85rem;
   line-height: 1;
   font-weight: 700;
-  box-shadow: 0 3px 8px rgba(255, 179, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(255, 213, 79, 0.15);
 }
 
 .bookmarkDescription {
-  font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-600);
-  margin: 0 0 0.35rem 0;
-  line-height: 1.45;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  word-break: break-word;
+  display: none;
 }
 
 .bookmarkCategory {
-  display: inline-block;
-  font-size: 0.68rem;
-  padding: 0.18rem 0.52rem;
-  background: var(--ifm-color-emphasis-100);
-  border-radius: 999px;
-  color: var(--ifm-color-emphasis-700);
-  font-weight: 500;
+  display: none;
 }
 
 .cardArrow {
-  font-size: 1.1rem;
-  color: var(--ifm-color-primary);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: all 0.24s ease;
-  position: relative;
-  z-index: 1;
-  flex-shrink: 0;
+  display: none;
 }
 
 .bookmarkCard:hover .cardArrow {
-  opacity: 1;
-  transform: translateX(0);
+  display: inline-flex;
 }
 
 /* 空状态 */
@@ -287,7 +273,7 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 2rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--home-text-secondary);
   font-size: 1.1rem;
 }
 
@@ -406,74 +392,11 @@
   }
 }
 
-/* 深色主题适配 - 所有文字改为白色 */
-[data-theme='dark'] .title {
-  color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme='dark'] .subtitle {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-[data-theme='dark'] .bookmarkCard {
-  background: rgba(40, 40, 40, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme='dark'] .pinnedCard {
-  border-color: rgba(255, 183, 77, 0.45);
-  box-shadow: 0 8px 24px rgba(255, 179, 71, 0.12);
-}
-
-[data-theme='dark'] .bookmarkCard:hover {
-  box-shadow: 0 8px 24px rgba(107, 68, 35, 0.35);
-  border-color: var(--ifm-color-primary);
-}
-
-[data-theme='dark'] .bookmarkName {
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme='dark'] .starredCard .bookmarkName {
-  color: #ffd166;
-}
-
-[data-theme='dark'] .bookmarkCard:hover .bookmarkName {
-  color: var(--ifm-color-primary-light);
-}
-
-[data-theme='dark'] .bookmarkDescription {
-  color: rgba(255, 255, 255, 0.75);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme='dark'] .bookmarkCategory {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-}
-
-[data-theme='dark'] .cardArrow {
-  color: var(--ifm-color-primary-light);
-}
-
-[data-theme='dark'] .emptyState {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-[data-theme='dark'] .tab {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-[data-theme='dark'] .tab:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-[data-theme='dark'] .starBadge {
-  background: linear-gradient(135deg, #ffd54f 0%, #ffb300 100%);
-  color: #5c3900;
+/* 深色主题适配 */
+[data-theme='dark'] .bookmarksContainer {
+  --home-surface: rgba(20, 24, 31, 0.82);
+  --home-border: rgba(255, 255, 255, 0.08);
+  --home-text-primary: rgba(245, 247, 250, 0.95);
+  --home-text-secondary: rgba(214, 220, 228, 0.78);
+  --home-text-muted: rgba(185, 192, 201, 0.62);
 }
