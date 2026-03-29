@@ -21,8 +21,8 @@ const bookmarksData = [
     url: 'https://wiki-power.com/',
     category: '各种开源网站',
     icon: '📖',
-    isPinned: true,
-    isStarred: true
+    isPinned: false,
+    isStarred: false
   },
   {
     name: '立创开源硬件平台',
@@ -75,8 +75,8 @@ const bookmarksData = [
     url: 'https://www.elecfans.com/',
     category: '各种开源网站',
     icon: '⚡',
-    isPinned: true,
-    isStarred: true
+    isPinned: false,
+    isStarred: false
   },
   {
     name: '恩山无线论坛',
@@ -157,7 +157,7 @@ const bookmarksData = [
     category: '各种开源网站',
     icon: '💡',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: 'LINUX DO',
@@ -166,7 +166,7 @@ const bookmarksData = [
     category: '各种开源网站',
     icon: '🐧',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: 'ST中文论坛',
@@ -195,7 +195,7 @@ const bookmarksData = [
     isPinned: false,
     isStarred: false
   },
-  
+
   // 大学相关
   {
     name: '浙江理工大学',
@@ -203,7 +203,7 @@ const bookmarksData = [
     url: 'https://www.zstu.edu.cn/',
     category: '大学相关',
     icon: '🏛️',
-    isPinned: true,
+    isPinned: false,
     isStarred: false
   },
   {
@@ -212,7 +212,7 @@ const bookmarksData = [
     url: 'https://zstuedu.woczx.com/#/app/student/myproject',
     category: '大学相关',
     icon: '👤',
-    isPinned: true,
+    isPinned: false,
     isStarred: false
   },
   {
@@ -258,7 +258,7 @@ const bookmarksData = [
     category: '大学相关',
     icon: '🎓',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: '信息学院官网',
@@ -275,8 +275,8 @@ const bookmarksData = [
     url: 'https://sso.zstu.edu.cn/login?service=https:%2F%2Fjwglxt.zstu.edu.cn%2Fsso%2Fjasiglogin',
     category: '大学相关',
     icon: '🔑',
-    isPinned: true,
-    isStarred: true
+    isPinned: false,
+    isStarred: false
   },
   {
     name: '工程电磁场纠正',
@@ -296,7 +296,7 @@ const bookmarksData = [
     isPinned: false,
     isStarred: false
   },
-  
+
   // 学术
   {
     name: '谷歌学术',
@@ -304,8 +304,8 @@ const bookmarksData = [
     url: 'http://www.xueshuwang.top/',
     category: '学术',
     icon: '🎓',
-    isPinned: true,
-    isStarred: true
+    isPinned: false,
+    isStarred: false
   },
   {
     name: '谷粉学术',
@@ -314,7 +314,7 @@ const bookmarksData = [
     category: '学术',
     icon: '🔍',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: '中国知网',
@@ -322,7 +322,7 @@ const bookmarksData = [
     url: 'https://www.cnki.net/old/',
     category: '学术',
     icon: '📚',
-    isPinned: true,
+    isPinned: false,
     isStarred: false
   },
   {
@@ -332,7 +332,7 @@ const bookmarksData = [
     category: '学术',
     icon: '📖',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: '巨人学术文献',
@@ -350,9 +350,9 @@ const bookmarksData = [
     category: '学术',
     icon: '🌐',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
-  
+
   // AI 工具
   {
     name: '豆包',
@@ -370,7 +370,7 @@ const bookmarksData = [
     category: 'AI 工具',
     icon: '♊',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: '智谱AI开放平台',
@@ -388,7 +388,7 @@ const bookmarksData = [
     category: 'AI 工具',
     icon: '⚡',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: 'ChatGPT',
@@ -396,8 +396,8 @@ const bookmarksData = [
     url: 'https://chatgpt.com/',
     category: 'AI 工具',
     icon: '🤖',
-    isPinned: true,
-    isStarred: true
+    isPinned: false,
+    isStarred: false
   },
   {
     name: '通义千问',
@@ -406,7 +406,7 @@ const bookmarksData = [
     category: 'AI 工具',
     icon: '💫',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: 'Kimi',
@@ -415,7 +415,7 @@ const bookmarksData = [
     category: 'AI 工具',
     icon: '🌙',
     isPinned: false,
-    isStarred: true
+    isStarred: false
   },
   {
     name: 'Xiaomi MiMo Studio',
@@ -432,8 +432,8 @@ const bookmarksData = [
     url: 'https://claude.ai/',
     category: 'AI 工具',
     icon: '🧠',
-    isPinned: true,
-    isStarred: true
+    isPinned: false,
+    isStarred: false
   },
 ];
 
@@ -472,9 +472,9 @@ export default function BookmarksPage() {
         {/* 页面头部 */}
         <header className={styles.header}>
           <div className={styles.headerWithAvatar}>
-            <img 
-              src={useBaseUrl('/person/touxiang.jpg')} 
-              alt="头像" 
+            <img
+              src={useBaseUrl('/person/touxiang.jpg')}
+              alt="头像"
               className={styles.avatar}
             />
             <h1 className={styles.title}>网站导航</h1>

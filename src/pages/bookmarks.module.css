@@ -3,30 +3,30 @@
  */
 
 .bookmarksContainer {
-  max-width: 1400px;
+  max-width: 1520px;
   margin: 0 auto;
-  padding: 3rem 2rem;
-  min-height: calc(100vh - 300px);
+  padding: 2rem 1.25rem 2.5rem;
+  min-height: calc(100vh - 220px);
   width: 100%;
 }
 
 /* 头部样式 */
 .header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .headerWithAvatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--ifm-color-primary);
@@ -40,14 +40,14 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-weight: 700;
   margin: 0;
   color: var(--ifm-color-primary);
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--ifm-color-emphasis-600);
   margin: 0;
 }
@@ -55,10 +55,10 @@
 /* 分类标签 */
 .categoryTabs {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.7rem;
+  margin-bottom: 1.35rem;
   overflow-x: auto;
-  padding: 0.5rem 0 0.75rem;
+  padding: 0.25rem 0 0.55rem;
   scrollbar-width: thin;
   scrollbar-color: var(--ifm-color-emphasis-300) transparent;
   -webkit-overflow-scrolling: touch;
@@ -83,11 +83,11 @@
 }
 
 .tab {
-  padding: 0.6rem 1.5rem;
+  padding: 0.45rem 1rem;
   background: var(--ifm-color-emphasis-100);
   border: none;
-  border-radius: 2rem;
-  font-size: 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--ifm-color-emphasis-700);
   cursor: pointer;
@@ -119,10 +119,10 @@
 /* 书签网格 */
 .bookmarksGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 0 auto 2rem auto;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+  gap: 0.95rem;
+  margin: 0 auto 1.5rem auto;
+  justify-items: stretch;
   width: 100%;
 }
 
@@ -130,19 +130,19 @@
 .bookmarkCard {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.75rem;
   width: 100%;
   min-height: 100%;
-  padding: 1.5rem;
+  padding: 1rem 0.95rem;
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s ease;
+  transition: all 0.24s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .bookmarkCard::before {
@@ -156,8 +156,8 @@
 }
 
 .bookmarkCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(107, 68, 35, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(107, 68, 35, 0.12);
   border-color: var(--ifm-color-primary);
 }
 
@@ -173,17 +173,17 @@
 .pinnedCard::after {
   content: '置顶';
   position: absolute;
-  top: 0.85rem;
-  right: 1rem;
-  padding: 0.2rem 0.55rem;
+  top: 0.65rem;
+  right: 0.75rem;
+  padding: 0.14rem 0.42rem;
   border-radius: 999px;
   background: linear-gradient(135deg, #ffb347 0%, #ff8c42 100%);
   color: #ffffff;
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   z-index: 2;
-  box-shadow: 0 4px 10px rgba(255, 140, 66, 0.28);
+  box-shadow: 0 4px 10px rgba(255, 140, 66, 0.22);
 }
 
 .starredCard .bookmarkName {
@@ -191,33 +191,36 @@
 }
 
 .cardIcon {
-  font-size: 2.5rem;
+  font-size: 1.95rem;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
 }
 
 .cardContent {
   flex: 1;
   position: relative;
   z-index: 1;
-  padding-right: 0.75rem;
+  min-width: 0;
+  padding-right: 0.25rem;
 }
 
 .bookmarkNameRow {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  margin: 0 0 0.5rem 0;
+  gap: 0.35rem;
+  margin: 0 0 0.3rem 0;
 }
 
 .bookmarkName {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   margin: 0;
   color: var(--ifm-color-emphasis-900);
-  transition: color 0.3s ease;
+  transition: color 0.24s ease;
+  line-height: 1.35;
   word-break: break-word;
 }
 
@@ -229,23 +232,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.5rem;
-  height: 1.5rem;
-  padding: 0 0.35rem;
+  min-width: 1.2rem;
+  height: 1.2rem;
+  padding: 0 0.24rem;
   border-radius: 999px;
   background: linear-gradient(135deg, #ffd54f 0%, #ffb300 100%);
   color: #7a4b00;
-  font-size: 0.9rem;
+  font-size: 0.72rem;
   line-height: 1;
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(255, 179, 0, 0.25);
+  box-shadow: 0 3px 8px rgba(255, 179, 0, 0.2);
 }
 
 .bookmarkDescription {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--ifm-color-emphasis-600);
-  margin: 0 0 0.5rem 0;
-  line-height: 1.5;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.45;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -255,20 +258,20 @@
 
 .bookmarkCategory {
   display: inline-block;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
+  font-size: 0.68rem;
+  padding: 0.18rem 0.52rem;
   background: var(--ifm-color-emphasis-100);
-  border-radius: 1rem;
+  border-radius: 999px;
   color: var(--ifm-color-emphasis-700);
   font-weight: 500;
 }
 
 .cardArrow {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: var(--ifm-color-primary);
   opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.3s ease;
+  transform: translateX(-6px);
+  transition: all 0.24s ease;
   position: relative;
   z-index: 1;
   flex-shrink: 0;
@@ -291,12 +294,12 @@
 /* 响应式设计 */
 @media screen and (max-width: 768px) {
   .bookmarksContainer {
-    padding: 2rem 1rem;
+    padding: 1.5rem 0.85rem 2rem;
     max-width: 100%;
   }
 
   .header {
-    margin-bottom: 2.25rem;
+    margin-bottom: 1.6rem;
   }
 
   .headerWithAvatar {
@@ -304,12 +307,12 @@
   }
 
   .avatar {
-    width: 68px;
-    height: 68px;
+    width: 56px;
+    height: 56px;
   }
 
   .title {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
   }
 
   .subtitle {
@@ -317,20 +320,20 @@
   }
 
   .categoryTabs {
-    padding-bottom: 1rem;
+    padding-bottom: 0.75rem;
     justify-content: flex-start;
-    margin-inline: -0.15rem;
-    padding-inline: 0.15rem;
+    margin-inline: -0.1rem;
+    padding-inline: 0.1rem;
   }
 
   .bookmarksGrid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.8rem;
+    justify-items: stretch;
   }
 
   .bookmarkCard {
-    padding: 1.2rem;
+    padding: 0.9rem 0.85rem;
     width: 100%;
     max-width: none;
   }
@@ -341,15 +344,15 @@
   }
 
   .bookmarkName {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
 
   .bookmarkDescription {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
   }
 
   .cardIcon {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 
   .cardArrow {
@@ -360,7 +363,7 @@
 
 @media screen and (max-width: 480px) {
   .bookmarksContainer {
-    padding: 1.5rem 0.85rem;
+    padding: 1.2rem 0.7rem 1.6rem;
   }
 
   .headerWithAvatar {
@@ -372,15 +375,15 @@
   }
 
   .tab {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.42rem 0.8rem;
+    font-size: 0.82rem;
   }
 
   .bookmarkCard {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    padding: 1rem;
+    padding: 0.88rem 0.82rem;
   }
 
   .cardContent {

@@ -14,7 +14,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'person/favicon.ico',
   organizationName: 'taohuayao8844', // Usually your GitHub org/user name.
   projectName: 'taohuayao8844.github.io', // Usually your repo name.
   i18n: {
@@ -212,6 +212,10 @@ const config = {
         {
           name: 'description',
           content: 'ZeroPointNine 的个人博客与知识整理站，记录学习、生活与思考。',
+        },
+        {
+          rel: 'apple-touch-icon',
+          href: '/person/apple-touch-icon.png',
         },
       ],
     }),

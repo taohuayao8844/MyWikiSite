@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '@theme/Layout'
+import siteStatistics from '../data/site-statistics.json'
 import styles from './index.module.css'
 
 const socialPlatformList = [
@@ -29,9 +30,24 @@ const profileHighlightList = [
     label: '状态',
     value: '理想主义在线',
   },
+]
+
+const siteStatisticsList = [
   {
-    label: '偏好',
-    value: '我是摄影佬',
+    label: '文章总数',
+    value: `${siteStatistics.articleCount}`,
+  },
+  {
+    label: '运行时长',
+    value: siteStatistics.runtime,
+  },
+  {
+    label: '总字数',
+    value: siteStatistics.totalCount,
+  },
+  {
+    label: '最近更新',
+    value: siteStatistics.lastUpdate,
   },
 ]
 
@@ -72,11 +88,19 @@ export default function Home() {
 
             <div className={styles.contentGrid}>
               <article className={styles.introductionCard}>
-                <div className={styles.cardLabel}>ABOUT ME</div>
+                <div className={styles.cardLabel}>关于我</div>
                 <div className={styles.description}>
                   <p>你好，我是 0.9，一个三分钟热度的大三学生 👋</p>
                   <p>爱好整点摄影和羽毛球玩玩，是一个不卷绩点的理想主义者。</p>
                   <p>浙江某所“冲击双一流”高校在读，通信工程专业，殊途同归走向计算机。</p>
+                </div>
+
+                <div className={styles.aboutImageSection}>
+                  <img
+                    src='/person/back2.jpg'
+                    alt='关于我的展示图片'
+                    className={styles.aboutImage}
+                  />
                 </div>
 
                 <div className={styles.socialLinks}>
@@ -99,7 +123,7 @@ export default function Home() {
 
               <aside className={styles.infoColumn}>
                 <div className={styles.profileCard}>
-                  <div className={styles.cardLabel}>PROFILE SNAPSHOT</div>
+                  <div className={styles.cardLabel}>个人信息</div>
                   <div className={styles.profileList}>
                     {profileHighlightList.map((profileHighlight) => (
                       <div
@@ -111,6 +135,25 @@ export default function Home() {
                         </span>
                         <strong className={styles.profileItemValue}>
                           {profileHighlight.value}
+                        </strong>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={styles.statsCard}>
+                  <div className={styles.cardLabel}>站点统计</div>
+                  <div className={styles.statsList}>
+                    {siteStatisticsList.map((siteStatistic) => (
+                      <div
+                        key={siteStatistic.label}
+                        className={styles.statsItem}
+                      >
+                        <span className={styles.statsItemLabel}>
+                          {siteStatistic.label}
+                        </span>
+                        <strong className={styles.statsItemValue}>
+                          {siteStatistic.value}
                         </strong>
                       </div>
                     ))}

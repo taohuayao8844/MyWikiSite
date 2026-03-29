@@ -9,6 +9,15 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&family=Poppins:wght@500&display=swap"); */
 /* @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&family=Poppins:wght@500&display=swap"); */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+@font-face {
+  font-family: 'LXGW WenKai Screen';
+  src: url('/fonts/LXGWWenKaiGBScreen.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --ifm-color-primary: #93a0b3;
   --ifm-color-primary-dark: #7f8ca0;
@@ -20,7 +29,7 @@
   --ifm-code-font-size: 95%;
   --site-announcement-bar-stripe-color1: #d3dae3;
   --site-announcement-bar-stripe-color2: #edf1f5;
-  --ifm-font-family-base: 'JetBrains Mono Medium', 'FZLanTingYuanS-R-GB', 'Noto Sans', sans-serif;
+  --ifm-font-family-base: 'LXGW WenKai Screen', 'JetBrains Mono Medium', 'FZLanTingYuanS-R-GB', 'Noto Sans', sans-serif;
   --site-light-background: #f5f7fb;
   --site-light-surface: rgba(255, 255, 255, 0.82);
   --site-light-border: rgba(127, 140, 160, 0.16);
@@ -50,7 +59,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 html {
   font-style: normal;
-  font-family: 'JetBrains Mono Medium', 'Noto Sans', sans-serif;
+  font-family: 'LXGW WenKai Screen', 'JetBrains Mono Medium', 'Noto Sans', sans-serif;
   color: var(--site-light-text-primary);
   background: var(--site-light-background);
 }
@@ -153,26 +162,107 @@ hr {
   color: rgb(201, 120, 120);
 }
 blockquote {
-  transition: all 0.5s ease-in-out;
-  /* background: var(--ifm-color-primary-lighter); */
-  /* border-bottom: #25c2a0 1px solid; */
-  background-color: var(--site-light-blockquote-background);
-  font-size: 0.9em;
-  border-image-source: linear-gradient(to left, #8a5a32, #f6efe8);
-  box-shadow: 1px 1px 5px 5px rgba(139, 138, 138, 0.01);
-  padding: 5px 10px;
-  margin: 10px 0;
-  border-radius: 5px;
+  position: relative;
+  margin: 1.2rem 0;
+  padding: 1rem 1.15rem 1rem 1.25rem;
+  border: 1px solid rgba(98, 118, 145, 0.22);
+  border-left: 4px solid rgba(112, 195, 255, 0.85);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(239, 244, 252, 0.5)),
+    rgba(245, 248, 253, 0.78);
+  box-shadow:
+    0 14px 32px rgba(77, 93, 122, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  overflow: hidden;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease;
 }
+
+blockquote::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(112, 195, 255, 0.14), transparent 22%),
+    radial-gradient(circle at top right, rgba(157, 227, 255, 0.18), transparent 26%);
+  pointer-events: none;
+}
+
+blockquote::after {
+  content: '';
+  position: absolute;
+  top: 0.85rem;
+  right: 1rem;
+  width: 4.6rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(112, 195, 255, 0), rgba(112, 195, 255, 0.72), rgba(112, 195, 255, 0));
+  box-shadow: 0 0 14px rgba(112, 195, 255, 0.42);
+  pointer-events: none;
+}
+
+blockquote p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #304154;
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+  text-transform: none;
+}
+
 blockquote:hover {
-  /* border-left: 2px solid var(--ifm-color-primary); */
-  border-image-source: linear-gradient(to left, #8a5a32, var(--ifm-color-primary));
-  border-image-slice: 1;
-  box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0);
+  transform: translateY(-2px);
+  border-color: rgba(112, 195, 255, 0.44);
+  box-shadow:
+    0 18px 40px rgba(65, 85, 116, 0.18),
+    0 0 0 1px rgba(112, 195, 255, 0.08),
+    0 0 24px rgba(112, 195, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
 }
 
 html[data-theme='dark'] blockquote {
-  background-color: rgba(0, 0, 0, 0.3);
+  border-color: rgba(118, 170, 224, 0.2);
+  border-left-color: rgba(111, 210, 255, 0.95);
+  background:
+    linear-gradient(135deg, rgba(16, 26, 40, 0.88), rgba(10, 16, 28, 0.76)),
+    rgba(7, 11, 19, 0.82);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(120, 176, 240, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+html[data-theme='dark'] blockquote::before {
+  background:
+    linear-gradient(90deg, rgba(92, 197, 255, 0.16), transparent 24%),
+    radial-gradient(circle at top right, rgba(84, 177, 255, 0.2), transparent 28%);
+}
+
+html[data-theme='dark'] blockquote::after {
+  background: linear-gradient(90deg, rgba(92, 197, 255, 0), rgba(92, 197, 255, 0.82), rgba(92, 197, 255, 0));
+  box-shadow: 0 0 16px rgba(92, 197, 255, 0.45);
+}
+
+html[data-theme='dark'] blockquote p {
+  color: rgba(220, 235, 252, 0.9);
+}
+
+html[data-theme='dark'] blockquote:hover {
+  border-color: rgba(92, 197, 255, 0.36);
+  box-shadow:
+    0 22px 44px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(92, 197, 255, 0.08),
+    0 0 28px rgba(92, 197, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 pre {

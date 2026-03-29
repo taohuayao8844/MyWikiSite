@@ -5,19 +5,6 @@ import styles from './friends.module.css'
 // 友链数据
 const friendsData = [
   {
-    category: '技术博客',
-    links: [
-      {
-        name: 'React',
-        url: 'https://react.dev/',
-        description: '用于构建用户界面的 JavaScript 库',
-        isPinned: false,
-        isStarred: false,
-        isFeatured: false
-      }
-    ]
-  },
-  {
     category: '强推友链博客',
     links: [
       {
@@ -32,6 +19,14 @@ const friendsData = [
         name: '碳烤鱼的博客',
         url: 'https://www.indratang.top/s1/zero2hero',
         description: '这个是一个浙大的工科学长,给了我很多的启发,如果大一就看了这个博客,可能会少走很多弯路,强推！',
+        isPinned: true,
+        isStarred: true,
+        isFeatured: true
+      },
+      {
+        name: 'CS自学指南',
+        url: 'https://csdiy.wiki/#cs61a',
+        description: '一份完整的CS自学指南',
         isPinned: true,
         isStarred: true,
         isFeatured: true
