@@ -13,3 +13,5 @@
 >V:zero_point_nine
 
 ## 聚流成河，聚沙成塔
+
+![image-20260329191049896](../static/image_photo/live/image-20260329191049896.png)

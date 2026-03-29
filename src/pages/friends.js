@@ -31,6 +31,14 @@ const friendsData = [
         isPinned: true,
         isStarred: true,
         isFeatured: true
+      },
+      {
+        name: '罗磊的博客',
+        url: 'https://luolei.org/category/code',
+        description: '一个大佬的博客，内容涵盖了编程、算法、数据结构等多个方面，适合想要深入学习计算机科学的朋友们。',
+        isPinned: false,
+        isStarred: false,
+        isFeatured: false
       }
     ]
   },

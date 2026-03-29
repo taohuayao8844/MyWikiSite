@@ -290,6 +290,44 @@ code {
   border-left: var(--ifm-color-primary-darker) 4px solid;
   border-radius: 1px;
 }
+/* Wiki文章description样式 */
+.doc-item-description {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0 2rem 0;
+  border-left: 4px solid var(--ifm-color-primary);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(249, 252, 255, 0.85)),
+    rgba(240, 245, 255, 0.9);
+  border-radius: 8px;
+  box-shadow:
+    0 4px 12px rgba(147, 160, 179, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+
+.doc-item-description p {
+  margin: 0;
+  color: var(--site-light-text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+html[data-theme='dark'] .doc-item-description {
+  background:
+    linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(20, 30, 46, 0.85)),
+    rgba(15, 23, 42, 0.9);
+  border-left-color: rgba(111, 210, 255, 0.8);
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme='dark'] .doc-item-description p {
+  color: rgba(220, 235, 252, 0.9);
+}
+
 .markdown img {
   display: block;
   margin: 1rem auto;
