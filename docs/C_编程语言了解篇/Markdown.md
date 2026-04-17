@@ -77,19 +77,11 @@ Markdown 是一种轻量级标记语言。
 
 [百度](baidu.com)
 
-![花](flower.png)
-
 ```
 
 Markdown 的图片一般有路径，因编辑地方不同而异。
 
 一般在知乎、CSDN 等网页直接粘贴即可。在项目中写 Markdown 需要用相对路径来写。
-
-```
-![s150](../../../../assets/images/flower.png)
-```
-
-![s150](../../../../assets/images/flower.png)
 
 ### 更多彩的语法
 

@@ -3,22 +3,142 @@ import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './bookmarks.module.css';
 import { 
-  FaDesktop, FaBook, FaWrench, FaCog, FaFlask, FaPlug, FaList,
-  FaBolt, FaWifi, FaTicketAlt, FaPaw, FaUnlock, FaDatabase,
-  FaScroll, FaSave, FaSeedling, FaLightbulb, FaLinux, FaIndustry,
-  FaKey, FaUniversity, FaUser, FaLock, FaBullhorn, FaEnvelope,
-  FaGraduationCap, FaEdit, FaArrowRight, FaStar
+  FaRobot, FaBrain, FaLanguage, FaLightbulb, FaBook, FaUniversity,
+  FaKey, FaTicketAlt, FaSearch, FaDesktop, FaCog, FaFlask,
+  FaMicrochip, FaPlug, FaWifi, FaLock, FaUnlock, FaDatabase,
+  FaScroll, FaLinux, FaIndustry, FaGraduationCap, FaUser,
+  FaBullhorn, FaEnvelope, FaEdit, FaArrowRight, FaStar,
+  FaGem, FaRocket, FaBolt, FaFile, FaCertificate
 } from 'react-icons/fa';
 
-// 书签数据 - 可以根据需要修改
+/* 书签数据 - 推荐网站已标记为星标，使用专业SVG简笔画图标 */
 const bookmarksData = [
+  // ⭐ 推荐/常用网站
+  {
+    name: 'ChatGPT',
+    description: 'OpenAI 的智能对话助手',
+    url: 'https://chatgpt.com/',
+    category: '⭐ 推荐网站',
+    icon: 'robot',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: 'Claude',
+    description: 'Anthropic 的 AI 助手',
+    url: 'https://claude.ai/',
+    category: '⭐ 推荐网站',
+    icon: 'brain',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: '豆包',
+    description: '字节跳动的智能对话助手',
+    url: 'https://www.doubao.com/chat/',
+    category: '⭐ 推荐网站',
+    icon: 'gem',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: 'Kimi',
+    description: '月之暗面的智能助手',
+    url: 'https://www.kimi.com/',
+    category: '⭐ 推荐网站',
+    icon: 'rocket',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: 'DeepL 翻译',
+    description: '高质量学术翻译工具',
+    url: 'https://www.deepl.com/en/translator',
+    category: '⭐ 推荐网站',
+    icon: 'language',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: '少数派',
+    description: '高效工具与数字生活',
+    url: 'https://sspai.com/',
+    category: '⭐ 推荐网站',
+    icon: 'lightbulb',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: '立创开源硬件平台',
+    description: '开源硬件项目分享平台',
+    url: 'https://oshwhub.com/',
+    category: '⭐ 推荐网站',
+    icon: 'microchip',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: 'Sipeed资料站',
+    description: 'Sipeed官方技术文档',
+    url: 'https://wiki.sipeed.com/',
+    category: '⭐ 推荐网站',
+    icon: 'book',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: '浙江理工大学',
+    description: '浙江理工大学官方网站',
+    url: 'https://www.zstu.edu.cn/',
+    category: '⭐ 推荐网站',
+    icon: 'university',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: '统一身份认证',
+    description: '浙江理工大学统一身份认证平台',
+    url: 'https://sso.zstu.edu.cn/login?service=https:%2F%2Fjwglxt.zstu.edu.cn%2Fsso%2Fjasiglogin',
+    category: '⭐ 推荐网站',
+    icon: 'key',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: '嘉立创领券专区',
+    description: 'PCB打样优惠领取',
+    url: 'https://www.jlc.com/newOrder/#/collectCoupons',
+    category: '⭐ 推荐网站',
+    icon: 'ticket',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: 'Gitee',
+    description: '国内代码托管平台',
+    url: 'https://gitee.com/',
+    category: '⭐ 推荐网站',
+    icon: 'database',
+    isPinned: true,
+    isStarred: true
+  },
+  {
+    name: '谷粉学术',
+    description: '谷歌学术镜像站',
+    url: 'https://gfsoso.99lb.net/',
+    category: '⭐ 推荐网站',
+    icon: 'search',
+    isPinned: true,
+    isStarred: true
+  },
+
   // 各种开源网站
   {
     name: '图拉丁CLUB',
     description: 'DIY垃圾佬的网站',
     url: 'https://tualatin.club/',
     category: '各种开源网站',
-    icon: '💻',
+    icon: 'desktop',
     isPinned: false,
     isStarred: false
   },
@@ -27,16 +147,7 @@ const bookmarksData = [
     description: '个人技术知识库',
     url: 'https://wiki-power.com/',
     category: '各种开源网站',
-    icon: '📖',
-    isPinned: false,
-    isStarred: false
-  },
-  {
-    name: '立创开源硬件平台',
-    description: '开源硬件项目分享平台',
-    url: 'https://oshwhub.com/',
-    category: '各种开源网站',
-    icon: '🔧',
+    icon: 'book',
     isPinned: false,
     isStarred: false
   },
@@ -45,7 +156,7 @@ const bookmarksData = [
     description: 'EIDE开发环境社区',
     url: 'https://discuss.em-ide.com/?q=stc32',
     category: '各种开源网站',
-    icon: '⚙️',
+    icon: 'cog',
     isPinned: false,
     isStarred: false
   },
@@ -54,7 +165,7 @@ const bookmarksData = [
     description: '电子工程技术社区',
     url: 'https://bbs.eeworld.com.cn/forum-72-1.html',
     category: '各种开源网站',
-    icon: '🔬',
+    icon: 'flask',
     isPinned: false,
     isStarred: false
   },
@@ -63,7 +174,7 @@ const bookmarksData = [
     description: '单片机学习交流论坛',
     url: 'http://www.51hei.com/bbs/',
     category: '各种开源网站',
-    icon: '🔌',
+    icon: 'microchip',
     isPinned: false,
     isStarred: false
   },
@@ -72,7 +183,7 @@ const bookmarksData = [
     description: 'PCB设计与制造资源',
     url: 'https://www.pcbbar.com/',
     category: '各种开源网站',
-    icon: '📋',
+    icon: 'plug',
     isPinned: false,
     isStarred: false
   },
@@ -81,7 +192,7 @@ const bookmarksData = [
     description: '电子工程师学习交流社区',
     url: 'https://www.elecfans.com/',
     category: '各种开源网站',
-    icon: '⚡',
+    icon: 'bolt',
     isPinned: false,
     isStarred: false
   },
@@ -90,7 +201,7 @@ const bookmarksData = [
     description: '无线网络技术论坛',
     url: 'https://www.right.com.cn/forum/',
     category: '各种开源网站',
-    icon: '📶',
+    icon: 'wifi',
     isPinned: false,
     isStarred: false
   },
@@ -99,7 +210,7 @@ const bookmarksData = [
     description: 'PCB打样优惠领取',
     url: 'https://www.jlc.com/newOrder/#/collectCoupons',
     category: '各种开源网站',
-    icon: '🎟️',
+    icon: 'ticket',
     isPinned: false,
     isStarred: false
   },
@@ -108,7 +219,7 @@ const bookmarksData = [
     description: '国内代码托管平台',
     url: 'https://gitee.com/',
     category: '各种开源网站',
-    icon: '🐯',
+    icon: 'database',
     isPinned: false,
     isStarred: false
   },
@@ -117,7 +228,7 @@ const bookmarksData = [
     description: '软件安全与逆向分析论坛',
     url: 'https://www.52pojie.cn/index.php',
     category: '各种开源网站',
-    icon: '🔓',
+    icon: 'unlock',
     isPinned: false,
     isStarred: false
   },
@@ -126,7 +237,7 @@ const bookmarksData = [
     description: 'Sipeed官方技术文档',
     url: 'https://wiki.sipeed.com/',
     category: '各种开源网站',
-    icon: '📚',
+    icon: 'book',
     isPinned: false,
     isStarred: false
   },
@@ -135,7 +246,7 @@ const bookmarksData = [
     description: 'GreasyFork用户脚本',
     url: 'https://greasyfork.org/zh-CN',
     category: '各种开源网站',
-    icon: '📜',
+    icon: 'scroll',
     isPinned: false,
     isStarred: false
   },
@@ -144,7 +255,7 @@ const bookmarksData = [
     description: '芯片查询与采购平台',
     url: 'https://www.semiee.com/search?searchModel=bl3085',
     category: '各种开源网站',
-    icon: '💾',
+    icon: 'microchip',
     isPinned: false,
     isStarred: false
   },
@@ -153,7 +264,7 @@ const bookmarksData = [
     description: 'PT资源种子分享',
     url: 'https://cc.mypt.cc/ok.php?type=confirm',
     category: '各种开源网站',
-    icon: '🌱',
+    icon: 'database',
     isPinned: false,
     isStarred: false
   },
@@ -162,7 +273,7 @@ const bookmarksData = [
     description: '高效工具与数字生活',
     url: 'https://sspai.com/',
     category: '各种开源网站',
-    icon: '💡',
+    icon: 'lightbulb',
     isPinned: false,
     isStarred: false
   },
@@ -171,7 +282,7 @@ const bookmarksData = [
     description: 'Linux技术社区',
     url: 'https://connect.linux.do/',
     category: '各种开源网站',
-    icon: '🐧',
+    icon: 'linux',
     isPinned: false,
     isStarred: false
   },
@@ -180,7 +291,7 @@ const bookmarksData = [
     description: '意法半导体中文社区',
     url: 'https://shequ.stmicroelectronics.cn/portal.php',
     category: '各种开源网站',
-    icon: '🏭',
+    icon: 'industry',
     isPinned: false,
     isStarred: false
   },
@@ -189,7 +300,7 @@ const bookmarksData = [
     description: 'CSDN文章免登录查看',
     url: 'http://101.42.252.35:5173/',
     category: '各种开源网站',
-    icon: '🔑',
+    icon: 'key',
     isPinned: false,
     isStarred: false
   },
@@ -198,7 +309,7 @@ const bookmarksData = [
     description: '学术期刊平台',
     url: 'https://shitjournal.org/dashboard',
     category: '各种开源网站',
-    icon: '📔',
+    icon: 'scroll',
     isPinned: false,
     isStarred: false
   },
@@ -209,7 +320,7 @@ const bookmarksData = [
     description: '浙江理工大学官方网站',
     url: 'https://www.zstu.edu.cn/',
     category: '大学相关',
-    icon: '🏛️',
+    icon: 'university',
     isPinned: false,
     isStarred: false
   },
@@ -218,7 +329,7 @@ const bookmarksData = [
     description: '浙江理工大学学生个人中心',
     url: 'https://zstuedu.woczx.com/#/app/student/myproject',
     category: '大学相关',
-    icon: '👤',
+    icon: 'user',
     isPinned: false,
     isStarred: false
   },
@@ -227,7 +338,7 @@ const bookmarksData = [
     description: '浙江理工大学图书馆',
     url: 'https://lib.zstu.edu.cn/',
     category: '大学相关',
-    icon: '📚',
+    icon: 'book',
     isPinned: false,
     isStarred: false
   },
@@ -236,7 +347,7 @@ const bookmarksData = [
     description: '浙江理工大学图书馆资源导航',
     url: 'https://elib.zstu.edu.cn/next/resource/databases/navigation',
     category: '大学相关',
-    icon: '🔐',
+    icon: 'lock',
     isPinned: false,
     isStarred: false
   },
@@ -245,7 +356,7 @@ const bookmarksData = [
     description: '浙江理工大学教务处学生公告',
     url: 'https://jwc.zstu.edu.cn/list.jsp?urltype=tree.TreeTempUrl&wbtreeid=1192',
     category: '大学相关',
-    icon: '📢',
+    icon: 'bullhorn',
     isPinned: false,
     isStarred: false
   },
@@ -254,7 +365,7 @@ const bookmarksData = [
     description: '浙江理工大学邮件系统',
     url: 'http://webmail.zstu.edu.cn/',
     category: '大学相关',
-    icon: '📧',
+    icon: 'envelope',
     isPinned: false,
     isStarred: false
   },
@@ -263,7 +374,7 @@ const bookmarksData = [
     description: '浙江理工大学数字学工系统',
     url: 'https://xgxt.zstu.edu.cn/',
     category: '大学相关',
-    icon: '🎓',
+    icon: 'graduationcap',
     isPinned: false,
     isStarred: false
   },
@@ -272,7 +383,7 @@ const bookmarksData = [
     description: '信息科学与工程学院官方网站',
     url: 'https://sise.zstu.edu.cn/content.jsp?urltype=news.NewsContentUrl&wbtreeid=1141&wbnewsid=6299',
     category: '大学相关',
-    icon: '💻',
+    icon: 'desktop',
     isPinned: false,
     isStarred: false
   },
@@ -281,7 +392,7 @@ const bookmarksData = [
     description: '浙江理工大学统一身份认证平台',
     url: 'https://sso.zstu.edu.cn/login?service=https:%2F%2Fjwglxt.zstu.edu.cn%2Fsso%2Fjasiglogin',
     category: '大学相关',
-    icon: '🔑',
+    icon: 'key',
     isPinned: false,
     isStarred: false
   },
@@ -290,7 +401,7 @@ const bookmarksData = [
     description: '课程资源纠正文档',
     url: 'http://wiki.zstu.tech/index.php?title=ElectromagneticsErrata',
     category: '大学相关',
-    icon: '📝',
+    icon: 'edit',
     isPinned: false,
     isStarred: false
   },
@@ -299,7 +410,7 @@ const bookmarksData = [
     description: '浙江理工大学采购中心校外公示',
     url: 'https://cgzx.zstu.edu.cn/gggs/jggs/xwgs.htm',
     category: '大学相关',
-    icon: '📋',
+    icon: 'file',
     isPinned: false,
     isStarred: false
   },
@@ -310,7 +421,7 @@ const bookmarksData = [
     description: 'Google 的学术搜索平台',
     url: 'http://www.xueshuwang.top/',
     category: '学术',
-    icon: '🎓',
+    icon: 'graduationcap',
     isPinned: false,
     isStarred: false
   },
@@ -319,7 +430,7 @@ const bookmarksData = [
     description: '谷歌学术镜像站',
     url: 'https://gfsoso.99lb.net/',
     category: '学术',
-    icon: '🔍',
+    icon: 'search',
     isPinned: false,
     isStarred: false
   },
@@ -328,7 +439,7 @@ const bookmarksData = [
     description: '中国学术期刊全文数据库',
     url: 'https://www.cnki.net/old/',
     category: '学术',
-    icon: '📚',
+    icon: 'book',
     isPinned: false,
     isStarred: false
   },
@@ -337,7 +448,7 @@ const bookmarksData = [
     description: '学术文献下载工具',
     url: 'https://www.scihub.net.cn/sci-hub/',
     category: '学术',
-    icon: '📖',
+    icon: 'certificate',
     isPinned: false,
     isStarred: false
   },
@@ -346,7 +457,7 @@ const bookmarksData = [
     description: '学术文献检索平台',
     url: 'https://xs.typicalgame.com/',
     category: '学术',
-    icon: '📄',
+    icon: 'file',
     isPinned: false,
     isStarred: false
   },
@@ -355,7 +466,7 @@ const bookmarksData = [
     description: '高质量学术翻译工具',
     url: 'https://www.deepl.com/en/translator',
     category: '学术',
-    icon: '🌐',
+    icon: 'language',
     isPinned: false,
     isStarred: false
   },
@@ -366,7 +477,7 @@ const bookmarksData = [
     description: '字节跳动的智能对话助手',
     url: 'https://www.doubao.com/chat/',
     category: 'AI 工具',
-    icon: '🫘',
+    icon: 'gem',
     isPinned: false,
     isStarred: false
   },
@@ -375,7 +486,7 @@ const bookmarksData = [
     description: 'Google 的多模态 AI 助手',
     url: 'https://gemini.google.com/app?pli=1',
     category: 'AI 工具',
-    icon: '♊',
+    icon: 'brain',
     isPinned: false,
     isStarred: false
   },
@@ -384,7 +495,7 @@ const bookmarksData = [
     description: '智谱 AI 的 AI 服务平台',
     url: 'https://www.bigmodel.cn/console/overview',
     category: 'AI 工具',
-    icon: '🎯',
+    icon: 'gem',
     isPinned: false,
     isStarred: false
   },
@@ -393,7 +504,7 @@ const bookmarksData = [
     description: 'X (Twitter) 的 AI 助手',
     url: 'https://grok.com/',
     category: 'AI 工具',
-    icon: '⚡',
+    icon: 'bolt',
     isPinned: false,
     isStarred: false
   },
@@ -402,7 +513,7 @@ const bookmarksData = [
     description: 'OpenAI 的智能对话助手',
     url: 'https://chatgpt.com/',
     category: 'AI 工具',
-    icon: '🤖',
+    icon: 'robot',
     isPinned: false,
     isStarred: false
   },
@@ -411,7 +522,7 @@ const bookmarksData = [
     description: '阿里云的 AI 大模型服务',
     url: 'https://www.qianwen.com/',
     category: 'AI 工具',
-    icon: '💫',
+    icon: 'gem',
     isPinned: false,
     isStarred: false
   },
@@ -420,7 +531,7 @@ const bookmarksData = [
     description: '月之暗面的智能助手',
     url: 'https://www.kimi.com/',
     category: 'AI 工具',
-    icon: '🌙',
+    icon: 'rocket',
     isPinned: false,
     isStarred: false
   },
@@ -429,7 +540,7 @@ const bookmarksData = [
     description: '小米的 AI 创作平台',
     url: 'https://aistudio.xiaomimimo.com/#/',
     category: 'AI 工具',
-    icon: '🏠',
+    icon: 'rocket',
     isPinned: false,
     isStarred: false
   },
@@ -438,11 +549,52 @@ const bookmarksData = [
     description: 'Anthropic 的 AI 助手',
     url: 'https://claude.ai/',
     category: 'AI 工具',
-    icon: '🧠',
+    icon: 'brain',
     isPinned: false,
     isStarred: false
   },
 ];
+
+// 图标映射函数
+const IconComponent = ({ iconName, className }) => {
+  const iconProps = { className };
+  
+  const icons = {
+    robot: <FaRobot {...iconProps} />,
+    brain: <FaBrain {...iconProps} />,
+    language: <FaLanguage {...iconProps} />,
+    lightbulb: <FaLightbulb {...iconProps} />,
+    book: <FaBook {...iconProps} />,
+    university: <FaUniversity {...iconProps} />,
+    key: <FaKey {...iconProps} />,
+    ticket: <FaTicketAlt {...iconProps} />,
+    search: <FaSearch {...iconProps} />,
+    desktop: <FaDesktop {...iconProps} />,
+    cog: <FaCog {...iconProps} />,
+    flask: <FaFlask {...iconProps} />,
+    microchip: <FaMicrochip {...iconProps} />,
+    plug: <FaPlug {...iconProps} />,
+    wifi: <FaWifi {...iconProps} />,
+    lock: <FaLock {...iconProps} />,
+    unlock: <FaUnlock {...iconProps} />,
+    database: <FaDatabase {...iconProps} />,
+    scroll: <FaScroll {...iconProps} />,
+    linux: <FaLinux {...iconProps} />,
+    industry: <FaIndustry {...iconProps} />,
+    graduationcap: <FaGraduationCap {...iconProps} />,
+    user: <FaUser {...iconProps} />,
+    bullhorn: <FaBullhorn {...iconProps} />,
+    envelope: <FaEnvelope {...iconProps} />,
+    edit: <FaEdit {...iconProps} />,
+    gem: <FaGem {...iconProps} />,
+    rocket: <FaRocket {...iconProps} />,
+    bolt: <FaBolt {...iconProps} />,
+    file: <FaFile {...iconProps} />,
+    certificate: <FaCertificate {...iconProps} />,
+  };
+
+  return icons[iconName] || <FaBook {...iconProps} />;
+};
 
 function sortBookmarksByPriority(bookmarksList) {
   return [...bookmarksList].sort((leftBookmark, rightBookmark) => {
@@ -462,7 +614,7 @@ function sortBookmarksByPriority(bookmarksList) {
 const categories = ['全部', ...Array.from(new Set(bookmarksData.map(item => item.category)))];
 
 export default function BookmarksPage() {
-  const [activeCategory, setActiveCategory] = useState('全部');
+  const [activeCategory, setActiveCategory] = useState('⭐ 推荐网站');
 
   // 过滤书签数据
   const filteredBookmarks = useMemo(() => {
@@ -522,7 +674,9 @@ export default function BookmarksPage() {
                   rel="noopener noreferrer"
                   className={cardClassName}
                 >
-                  <div className={styles.cardIcon}>{bookmark.icon}</div>
+                  <div className={styles.cardIcon}>
+                    <IconComponent iconName={bookmark.icon} className={styles.cardIconSvg} />
+                  </div>
                   <div className={styles.cardContent}>
                     <div className={styles.bookmarkNameRow}>
                       <h3 className={styles.bookmarkName}>{bookmark.name}</h3>

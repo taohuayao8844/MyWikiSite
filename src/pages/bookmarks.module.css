@@ -1,5 +1,5 @@
 /**
- * 网站导航页面样式 - 统一首页社交链接风格
+ * 网站导航页面样式 - 简洁纯色风格
  */
 
 .bookmarksContainer {
@@ -192,19 +192,36 @@
   color: #ffd166;
 }
 
+/* 卡片图标容器 - 纯色简洁风格 */
 .cardIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.65rem;
-  height: 1.65rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
   position: relative;
   z-index: 1;
-  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+/* SVG图标样式 - 纯白色简洁 */
+.cardIconSvg {
+  font-size: 1.5rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.bookmarkCard:hover .cardIconSvg {
+  transform: scale(1.1);
+}
+
+.bookmarkCard:hover .cardIcon {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .cardContent {
@@ -338,7 +355,12 @@
   }
 
   .cardIcon {
-    font-size: 1.7rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .cardIconSvg {
+    font-size: 1.3rem;
   }
 
   .cardArrow {
@@ -390,6 +412,15 @@
     top: 0.65rem;
     right: 0.7rem;
   }
+
+  .cardIcon {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  .cardIconSvg {
+    font-size: 1.2rem;
+  }
 }
 
 /* 浅色主题适配 */
@@ -418,7 +449,7 @@
 
 [data-theme='light'] .bookmarkCard:hover {
   background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: rgba(0, 0, 0, 0.2);
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
@@ -434,7 +465,7 @@
 }
 
 [data-theme='light'] .bookmarkCard:hover .bookmarkName {
-  color: rgba(37, 99, 235, 0.95);
+  color: rgba(31, 41, 55, 0.95);
 }
 
 [data-theme='light'] .starredCard .bookmarkName {
@@ -470,6 +501,25 @@
 
 [data-theme='light'] .activeTab:hover {
   background: rgba(59, 130, 246, 1);
+}
+
+/* 浅色主题SVG图标样式 - 纯黑色简洁 */
+[data-theme='light'] .cardIcon {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='light'] .cardIconSvg {
+  color: #1f2937;
+}
+
+[data-theme='light'] .bookmarkCard:hover .cardIconSvg {
+  color: #1f2937;
+}
+
+[data-theme='light'] .bookmarkCard:hover .cardIcon {
+  background: rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.22);
 }
 
 /* 深色主题适配 */
