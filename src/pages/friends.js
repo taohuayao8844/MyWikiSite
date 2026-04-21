@@ -3,6 +3,24 @@ import Layout from '@theme/Layout'
 import styles from './friends.module.css'
 import { FaStar, FaArrowRight } from 'react-icons/fa'
 
+// 从 URL 中提取域名
+function getDomainFromUrl(url) {
+  try {
+    const urlObj = new URL(url)
+    return urlObj.hostname
+  } catch {
+    return ''
+  }
+}
+
+// 生成 Favicon URL（使用 Google 服务，国内可用备用）
+function getFaviconUrl(url, size = 64) {
+  const domain = getDomainFromUrl(url)
+  if (!domain) return null
+  // 使用 Google Favicon 服务
+  return `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`
+}
+
 // 友链数据
 const friendsData = [
   {
@@ -131,6 +149,18 @@ export default function Friends() {
                 rel='noopener noreferrer'
                 className={cardClassName}
               >
+                {/* Favicon 图标 */}
+                {getFaviconUrl(link.url) && (
+                  <img
+                    src={getFaviconUrl(link.url)}
+                    alt=""
+                    className={styles.favicon}
+                    onError={(e) => {
+                      // 如果加载失败，隐藏图标
+                      e.target.style.display = 'none'
+                    }}
+                  />
+                )}
                 <div className={styles.cardContent}>
                   <div className={styles.linkNameRow}>
                     <h3 className={styles.linkName}>{link.name}</h3>

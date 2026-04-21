@@ -8,8 +8,25 @@ import {
   FaMicrochip, FaPlug, FaWifi, FaLock, FaUnlock, FaDatabase,
   FaScroll, FaLinux, FaIndustry, FaGraduationCap, FaUser,
   FaBullhorn, FaEnvelope, FaEdit, FaArrowRight, FaStar,
-  FaGem, FaRocket, FaBolt, FaFile, FaCertificate
+  FaGem, FaRocket, FaBolt, FaFile, FaCertificate, FaGlobe
 } from 'react-icons/fa';
+
+// 提取网站域名的函数
+const extractDomain = (url) => {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.hostname;
+  } catch {
+    return '';
+  }
+};
+
+// 构建 Favicon URL - 使用 Google Favicon 服务
+const getFaviconUrl = (url) => {
+  const domain = extractDomain(url);
+  if (!domain) return null;
+  return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+};
 
 /* 书签数据 - 推荐网站已标记为星标，使用专业SVG简笔画图标 */
 const bookmarksData = [
@@ -666,6 +683,8 @@ export default function BookmarksPage() {
                 .filter(Boolean)
                 .join(' ');
 
+              const faviconUrl = getFaviconUrl(bookmark.url);
+              
               return (
                 <a
                   key={bookmark.url}
@@ -674,7 +693,18 @@ export default function BookmarksPage() {
                   rel="noopener noreferrer"
                   className={cardClassName}
                 >
-                  <div className={styles.cardIcon}>
+                  {faviconUrl ? (
+                    <img 
+                      src={faviconUrl} 
+                      alt="" 
+                      className={styles.favicon}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div className={styles.cardIcon} style={faviconUrl ? {display: 'none'} : undefined}>
                     <IconComponent iconName={bookmark.icon} className={styles.cardIconSvg} />
                   </div>
                   <div className={styles.cardContent}>

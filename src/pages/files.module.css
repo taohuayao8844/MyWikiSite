@@ -205,8 +205,8 @@
   width: 100%;
   min-height: 100%;
   padding: 0.8rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.15);
   border-radius: 16px;
   text-decoration: none;
   color: var(--home-text-primary);
@@ -217,21 +217,21 @@
     box-shadow 0.24s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(37, 99, 235, 0.08);
 }
 
 .fileCard:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(37, 99, 235, 0.4);
+  background: rgba(37, 99, 235, 0.12);
   box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    0 14px 30px rgba(37, 99, 235, 0.18),
+    inset 0 1px 0 rgba(37, 99, 235, 0.12);
 }
 
 .pinnedCard {
-  border-color: rgba(255, 183, 77, 0.45);
-  background: rgba(255, 183, 77, 0.08);
+  border-color: rgba(37, 99, 235, 0.45);
+  background: rgba(37, 99, 235, 0.1);
 }
 
 .pinnedCard::after {
@@ -241,17 +241,17 @@
   right: 0.6rem;
   padding: 0.15rem 0.45rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, #ffb347 0%, #ff8c42 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: #ffffff;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   z-index: 2;
-  box-shadow: 0 2px 6px rgba(255, 140, 66, 0.28);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.28);
 }
 
 .recommendedCard .fileName {
-  color: #ffd166;
+  color: #60a5fa;
 }
 
 .fileIcon {
@@ -307,12 +307,12 @@
   height: 1.65rem;
   padding: 0 0.4rem;
   border-radius: 50%;
-  background: rgba(255, 213, 79, 0.2);
-  color: #ffd54f;
-  font-size: 0.85rem;
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  font-size: 0.75rem;
   line-height: 1;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(255, 213, 79, 0.15);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
 }
 
 .fileDescription {
@@ -473,23 +473,28 @@
 }
 
 [data-theme='light'] .fileCard {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   color: rgba(31, 41, 55, 0.95);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
 [data-theme='light'] .fileCard:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.35);
   box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    0 8px 20px rgba(59, 130, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 [data-theme='light'] .pinnedCard {
-  border-color: rgba(251, 146, 60, 0.5);
-  background: rgba(254, 243, 199, 0.7);
+  border-color: rgba(37, 99, 235, 0.5);
+  background: rgba(37, 99, 235, 0.12);
+}
+
+[data-theme='light'] .pinnedCard::after {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.28);
 }
 
 [data-theme='light'] .fileName {
@@ -501,7 +506,7 @@
 }
 
 [data-theme='light'] .recommendedCard .fileName {
-  color: rgba(217, 119, 6, 0.95);
+  color: rgba(37, 99, 235, 0.95);
 }
 
 [data-theme='light'] .fileDescription {
@@ -519,9 +524,9 @@
 }
 
 [data-theme='light'] .recommendedBadge {
-  background: rgba(251, 191, 36, 0.25);
-  color: rgba(245, 158, 11, 0.95);
-  box-shadow: 0 2px 6px rgba(251, 191, 36, 0.15);
+  background: rgba(59, 130, 246, 0.2);
+  color: rgba(37, 99, 235, 0.95);
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2);
 }
 
 [data-theme='light'] .emptyState {
