@@ -4,6 +4,8 @@ import siteStatistics from '../data/site-statistics.json'
 import styles from './index.module.css'
 import { FaGithub } from 'react-icons/fa'
 import MouseParticleEffect from '../components/MouseParticleEffect'
+import TypewriterText from '../components/TypewriterText'
+import TiltCard from '../components/TiltCard'
 
 const socialPlatformList = [
   {
@@ -23,6 +25,12 @@ const profileHighlightList = [
     value: '理想主义在线',
   },
 ]
+
+// 打字机切换的标语列表
+const taglineList = [
+  '叹隙中驹，石中火，梦中身',
+]
+
 
 const siteStatisticsList = [
   {
@@ -68,8 +76,16 @@ export default function Home() {
 
                 <div className={styles.identityText}>
                   <h1 className={styles.name}>ZERO_POINT_NINE</h1>
-                  <p className={styles.tagline}>叹隙中驹，石中火，梦中身</p>
+                  <p className={styles.tagline}>
+                    <TypewriterText
+                      texts={taglineList}
+                      typingSpeed={100}
+                      deletingSpeed={50}
+                      pauseDuration={2500}
+                    />
+                  </p>
                 </div>
+
               </div>
 
               <div className={styles.welcomePanel}>
@@ -82,79 +98,86 @@ export default function Home() {
             </div>
 
             <div className={styles.contentGrid}>
-              <article className={styles.introductionCard}>
-                <div className={styles.cardLabel}>关于我</div>
-                <div className={styles.description}>
-                  <p>你好，我是 0.9，一个三分钟热度的大三学生</p>
-                  <p>爱好整点摄影和羽毛球玩玩，是一个不卷绩点的理想主义者。</p>
-                  <p>浙江某所"冲击双一流"高校在读，通信工程专业，殊途同归走向计算机。</p>
-                </div>
+              <TiltCard tiltDegree={5} glareOpacity={0.15} scale={1.01}>
+                <article className={styles.introductionCard}>
+                  <div className={styles.cardLabel}>关于我</div>
+                  <div className={styles.description}>
+                    <p>你好，我是 0.9，一个三分钟热度的大三学生</p>
+                    <p>爱好整点摄影和羽毛球玩玩，是一个不卷绩点的理想主义者。</p>
+                    <p>浙江某所"冲击双一流"高校在读，通信工程专业，殊途同归走向计算机。</p>
+                  </div>
 
-                <div className={styles.aboutImageSection}>
-                  <img
-                    src='/person/back2.jpg'
-                    alt='关于我的展示图片'
-                    className={styles.aboutImage}
-                  />
-                </div>
+                  <div className={styles.aboutImageSection}>
+                    <img
+                      src='/person/back2.jpg'
+                      alt='关于我的展示图片'
+                      className={styles.aboutImage}
+                    />
+                  </div>
 
-                <div className={styles.socialLinks}>
-                  {socialPlatformList.map((socialPlatform) => (
-                    <a
-                      key={socialPlatform.label}
-                      href={socialPlatform.href}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className={styles.socialLink}
-                    >
-                      <span className={styles.socialIcon}>
-                        {socialPlatform.icon}
-                      </span>
-                      <span>{socialPlatform.label}</span>
-                    </a>
-                  ))}
-                </div>
-              </article>
+                  <div className={styles.socialLinks}>
+                    {socialPlatformList.map((socialPlatform) => (
+                      <a
+                        key={socialPlatform.label}
+                        href={socialPlatform.href}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className={styles.socialLink}
+                      >
+                        <span className={styles.socialIcon}>
+                          {socialPlatform.icon}
+                        </span>
+                        <span>{socialPlatform.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              </TiltCard>
 
               <aside className={styles.infoColumn}>
-                <div className={styles.profileCard}>
-                  <div className={styles.cardLabel}>个人信息</div>
-                  <div className={styles.profileList}>
-                    {profileHighlightList.map((profileHighlight) => (
-                      <div
-                        key={profileHighlight.label}
-                        className={styles.profileItem}
-                      >
-                        <span className={styles.profileItemLabel}>
-                          {profileHighlight.label}
-                        </span>
-                        <strong className={styles.profileItemValue}>
-                          {profileHighlight.value}
-                        </strong>
-                      </div>
-                    ))}
+                <TiltCard tiltDegree={4} glareOpacity={0.12} scale={1.01}>
+                  <div className={styles.profileCard}>
+                    <div className={styles.cardLabel}>个人信息</div>
+                    <div className={styles.profileList}>
+                      {profileHighlightList.map((profileHighlight) => (
+                        <div
+                          key={profileHighlight.label}
+                          className={styles.profileItem}
+                        >
+                          <span className={styles.profileItemLabel}>
+                            {profileHighlight.label}
+                          </span>
+                          <strong className={styles.profileItemValue}>
+                            {profileHighlight.value}
+                          </strong>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </TiltCard>
 
-                <div className={styles.statsCard}>
-                  <div className={styles.cardLabel}>站点统计</div>
-                  <div className={styles.statsList}>
-                    {siteStatisticsList.map((siteStatistic) => (
-                      <div
-                        key={siteStatistic.label}
-                        className={styles.statsItem}
-                      >
-                        <span className={styles.statsItemLabel}>
-                          {siteStatistic.label}
-                        </span>
-                        <strong className={styles.statsItemValue}>
-                          {siteStatistic.value}
-                        </strong>
-                      </div>
-                    ))}
+                <TiltCard tiltDegree={4} glareOpacity={0.12} scale={1.01}>
+                  <div className={styles.statsCard}>
+                    <div className={styles.cardLabel}>站点统计</div>
+                    <div className={styles.statsList}>
+                      {siteStatisticsList.map((siteStatistic) => (
+                        <div
+                          key={siteStatistic.label}
+                          className={styles.statsItem}
+                        >
+                          <span className={styles.statsItemLabel}>
+                            {siteStatistic.label}
+                          </span>
+                          <strong className={styles.statsItemValue}>
+                            {siteStatistic.value}
+                          </strong>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </TiltCard>
               </aside>
+
 
             </div>
           </div>

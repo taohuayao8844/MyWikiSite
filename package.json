@@ -9,6 +9,8 @@
     "build": "npm run generate:stats && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "npm run generate:stats && docusaurus deploy",
+    "deploy:bt": "pwsh -ExecutionPolicy Bypass -File scripts/deploy-to-bt.ps1",
+    "deploy:bt:watch": "node scripts/deploy-watch.js",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",

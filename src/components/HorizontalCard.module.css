@@ -1,0 +1,285 @@
+/* ============================================================
+ * HorizontalCard - 横向卡片(B站UP主 + 友链 共用)
+ * 左侧 profile + 右侧描述框,两种 variant 共享布局
+ * ============================================================ */
+
+.horizontalCard {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.horizontalCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.horizontalCardPinned {
+  border-color: var(--ifm-color-primary);
+  background: rgba(37, 99, 235, 0.03);
+}
+
+.horizontalCardStarred .horizontalCardName {
+  color: var(--ifm-color-primary-dark);
+}
+
+.horizontalCardFeatured {
+  border-color: var(--ifm-color-primary);
+}
+
+/* ----------------------------- 左侧 profile ----------------------------- */
+
+.horizontalCardProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  text-align: center;
+  position: relative;
+  transition: background 0.18s ease;
+}
+
+.horizontalCardProfile:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.horizontalCardAvatar {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+}
+
+.horizontalCardAvatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.horizontalCardAvatarFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  border: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.horizontalCardAvatarBadge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  border: 2px solid var(--ifm-background-surface-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.horizontalCardAvatarBadge[data-variant='bili'] {
+  background: #00a1d6;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+.horizontalCardAvatarBadge[data-variant='friend'] {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #ffffff;
+  font-size: 0.72rem;
+}
+
+.horizontalCardProfileText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  width: 100%;
+}
+
+.horizontalCardName {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.horizontalCardStar {
+  font-size: 0.75rem;
+  color: #f59e0b;
+}
+
+.horizontalCardSub {
+  font-size: 0.72rem;
+  color: var(--ifm-color-emphasis-600);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.horizontalCardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 999px;
+  font-weight: 500;
+  transition: background 0.18s ease;
+}
+
+.horizontalCardLink svg {
+  font-size: 0.65rem;
+}
+
+.horizontalCardProfile:hover .horizontalCardLink {
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* ----------------------------- 右侧描述框 ----------------------------- */
+
+.horizontalCardDesc {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.5rem;
+  min-width: 0;
+}
+
+.horizontalCardDescHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+
+.horizontalCardDescLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 4px;
+}
+
+.horizontalCardDescContent {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--ifm-font-color-base);
+}
+
+.horizontalCardDescLine {
+  margin: 0 0 0.4rem 0;
+}
+
+.horizontalCardDescLine:last-child {
+  margin-bottom: 0;
+}
+
+.horizontalCardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--ifm-color-emphasis-200);
+}
+
+.horizontalCardTag {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* ----------------------------- 响应式 ----------------------------- */
+
+@media screen and (max-width: 720px) {
+  .horizontalCard {
+    grid-template-columns: 1fr;
+  }
+
+  .horizontalCardProfile {
+    border-right: none;
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+    padding: 1.25rem 1rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .horizontalCardProfileText {
+    align-items: flex-start;
+  }
+
+  .horizontalCardAvatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .horizontalCardDesc {
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* ----------------------------- 主题适配 ----------------------------- */
+
+[data-theme='dark'] .horizontalCardPinned {
+  background: rgba(96, 165, 250, 0.05);
+}
+
+[data-theme='dark'] .horizontalCardProfile:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+[data-theme='dark'] .horizontalCardLink {
+  background: rgba(96, 165, 250, 0.12);
+  color: #93c5fd;
+}
+
+[data-theme='dark'] .horizontalCardProfile:hover .horizontalCardLink {
+  background: rgba(96, 165, 250, 0.2);
+}
+
+[data-theme='dark'] .horizontalCardTag {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}

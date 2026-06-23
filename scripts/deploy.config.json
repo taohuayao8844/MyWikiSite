@@ -1,0 +1,38 @@
+{
+  "_comment": "宝塔服务器部署配置 - PowerShell 一键部署 与 watch 自动部署共用。填好下方真实信息后保存即可。",
+
+  "server": {
+    "host": "39.108.181.47",
+    "user": "root",
+    "port": 22,
+    "sitePath": "/www/wwwroot/dist/"
+  },
+
+  "ssh": {
+    "privateKeyPath": "C:\\Users\\27486\\.ssh\\id_rsa_main",
+    "usePassword": false,
+    "password": ""
+  },
+
+  "exclude": [
+    "39.108.181.47_5555"
+  ],
+
+  "build": {
+    "command": "npm run build",
+    "outputDir": "build"
+  },
+
+  "watch": {
+    "enabled": false,
+    "debounceMs": 3000,
+    "ignore": [
+      "node_modules/**",
+      "build/**",
+      ".docusaurus/**",
+      ".git/**",
+      "scripts/deploy.config.json",
+      "scripts/_check-syntax.ps1"
+    ]
+  }
+}

@@ -143,11 +143,6 @@ const config = {
             position: 'left',
           },
           {
-            to: '/friends',
-            label: '🔗友链',
-            position: 'left',
-          },
-          {
             type: 'search',
             position: 'right',
           },
@@ -167,10 +162,6 @@ const config = {
                 label: '导航',
                 to: '/bookmarks',
               },
-              {
-                label: '友链',
-                to: '/friends',
-              },
             ],
           },
           {
@@ -187,10 +178,6 @@ const config = {
               {
                 label: 'Bilibili',
                 href: 'https://space.bilibili.com/396104992?spm_id_from=333.1007.0.0',
-              },
-              {
-                label: '友链',
-                href: 'https://sysnow.xyz/',
               },
             ],
           },
